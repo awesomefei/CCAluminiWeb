@@ -25,6 +25,12 @@ namespace ccalummiwebsite {
                 controller: ccalummiwebsite.Controllers.AboutController,
                 controllerAs: 'controller'
             })
+            .state('login', {
+                url: '/login',
+                templateUrl: '/ngApp/views/login.html',
+                controller: ccalummiwebsite.Controllers.LoginController,
+                controllerAs: 'controller'
+            })
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'
