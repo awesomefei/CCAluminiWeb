@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
 // import * as crypto from 'crypto-js';
 import * as jwt from 'jsonwebtoken';
+import * as Pic from './pic';
 
 export interface IUser extends mongoose.Document{
     firstname:string,
@@ -28,19 +29,22 @@ export interface IUser extends mongoose.Document{
 }
 
 let userSchema = new mongoose.Schema({
-    pics:{
+
+    //only id
+    pics:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Pic"
-    },
+    }],
     //only user Id
-    firendsList:{
+    firendsList:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
-    },
-    activities:{
+    }],
+
+    activities:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Activity'
-    },
+    }],
 
 
     hobby:{
