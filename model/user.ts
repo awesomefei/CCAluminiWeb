@@ -5,7 +5,7 @@ import * as Pic from './pic';
 
 export interface IUser extends mongoose.Document{
     firstname:string,
-    surname:string,
+    username:string,
     email:string,
     password:string,
     profileImageUrl:string,
