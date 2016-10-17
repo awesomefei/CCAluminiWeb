@@ -1,0 +1,26 @@
+.col-sm-4 {
+    background-color:green ;
+}
+.col-sm-6 {
+    background-color:lightyellow ;
+}
+
+.profileBar{
+background:#1d2129;
+  width:auto;
+  height:200px;
+  overflow:hidden;
+}
+.child{
+/*background:#ffffff;*/
+  /*width:500px;
+  height:100px;*/
+  position:relative;
+}
+.child img{
+position:absolute;
+  bottom:96px;
+  right:86%;
+  width:150px;
+  height:150px;
+}

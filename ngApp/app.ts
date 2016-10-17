@@ -7,6 +7,12 @@ namespace ccalummiwebsite {
     ) => {
         // Define routes
         $stateProvider
+            .state('account', {
+                url: '/account',
+                templateUrl: '/ngApp/views/account.html',
+                controller: ccalummiwebsite.Controllers.AccountController,
+                controllerAs: 'vm'
+            })
             .state('home', {
                 url: '/',
                 templateUrl: '/ngApp/views/home.html',
@@ -31,6 +37,6 @@ namespace ccalummiwebsite {
         $locationProvider.html5Mode(true);
     });
 
-    
+
 
 }
