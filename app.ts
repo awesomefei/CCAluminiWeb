@@ -5,12 +5,16 @@ import * as logger from 'morgan';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 import * as ejs from 'ejs';
+import * as passport from 'passport';
+const bearerToken = require('express-bearer-token');
+const expressValidator = require('express-validator');
 
 import Database from './db';
 
 
 import routes from './routes/index';
 import users from './routes/users';
+import userRouter from './routes/userRoute';
 
 let app = express();
 Database.connect();
@@ -22,9 +26,15 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(bearerToken());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(expressValidator());
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
@@ -33,6 +43,7 @@ app.use('/api', express.static(path.join(__dirname, 'api')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/api/users', userRouter)
 
 
 // redirect 404 to home for the sake of AngularJS client-side routes

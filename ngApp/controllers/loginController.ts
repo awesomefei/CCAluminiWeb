@@ -1,20 +1,22 @@
 namespace ccalummiwebsite.Controllers {
     export class LoginController {
         public loginInfo;
-        private userName;
+        private user;
 
         constructor(private loginService: ccalummiwebsite.Services.LoginService,
                     private $state: ng.ui.IStateService){
 
         }
 
-        login(){
-            this.loginService.login(this.loginInfo)
+
+
+        saveUser(){
+            this.loginService.saveUser(this.user)
             .then(()=>{
                 this.$state.go('home')
             })
             .catch(()=>{
-                alert('Login failed')
+                console.log('something went wrong')
             })
         }
     }
