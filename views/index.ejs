@@ -15,32 +15,87 @@
 </head>
 
 <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">CCA</a>
+                </div>
 
-    <div class="fluid-container">
-        <div>
-            <a href="/">Home</a> /
-            <a href="/about">About</a>
-            <a href="/account">Account</a>
-        </div>
-        <hr />
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="navbarController as vm">
+                    <ul class="nav navbar-nav">
+                        <li class="active" ng-show="!vm.getUsername()"><a href="/login">Login <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                            </li>
+                        </ul>
+                    <div ng-controller="navbarController as vm" ng-show="!vm.getUsername()">
+                        <form class="navbar-form navbar-right" role="search" ng-submit="vm.login()" id="loginForm">
+                            <div class="form-group">
+                                <div class="col-md-6">
+
+                                    <h6 class="loginText">
+                                        Email
+                                    </h6>
+                                    <input type="text" placeholder="Email" ng-model="vm.loginInfo.username">
+                                    <h6 class="forgotEmail">Forgot Email?</h6>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                    <h6 class="loginText">
+                                        Password
+                                    </h6>
+                                    <input type="password" placeholder="Password" name="name" value="" ng-model="vm.loginInfo.password">
+                                    <h6 class="forgotLogin">Forgot Password?</h6>
+                            </div>
+                                <button type="submit" class="btn btn-primary btn-xs">Login</button>
+                        </form>
+                    </div>
+                    <div ng-controller="navbarController as vm" ng-show="vm.getUsername()">
+                        <ul class="nav navbar-nav">
+                            <li ng-click="vm.logout()">Logout</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
 
         <ui-view></ui-view>
-    </div>
+  </div>
 
-    <script src="/bower_components/angular/angular.min.js"></script>
-    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
-    <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
-    <script src="/bower_components/angular-touch/angular-touch.min.js"></script>
-    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src="/bower_components/angular/angular.min.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js"></script>
+  <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
-    <script src="/ngApp/app.js"></script>
-    <script src="/ngApp/controllers/controllers.js"></script>
-    <script src="/ngApp/controllers/accountController.js"></script>
-
-    <script src="/ngApp/services/services.js"></script>
-    <script src="/ngApp/services/accountService.js"></script>
-
+  <script src="/ngApp/app.js"></script>
+  <!-- controllers -->
+  <script src="/ngApp/controllers/controllers.js"></script>
+  <script src="/ngApp/controllers/loginController.js"></script>
+  <script src="/ngApp/controllers/navbarController.js" charset="utf-8"></script>
+  <script src="/ngApp/controllers/accountController.js" charset="utf-8"></script>
+  <!-- services -->
+  <script src="/ngApp/services/loginService.js"></script>
+  <script src="/ngApp/services/services.js"></script>
+  <script src="/ngApp/services/accountService.js" charset="utf-8"></script>
 
 </body>
 

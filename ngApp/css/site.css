@@ -1,6 +1,15 @@
+.loginText {
+    color: white;
+}
+
+.forgotLogin {
+    color: lightgrey;
+}
+
 .col-sm-4 {
     background-color:green ;
 }
+
 .col-sm-6 {
     background-color:lightyellow ;
 }
