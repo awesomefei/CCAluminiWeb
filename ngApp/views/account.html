@@ -5,39 +5,93 @@
     </div>
     <div class="col-sm-7">
         <a href="#"><div class="profileBar" ></div></a>
+        <br>
 
         <div class="child">
             <a href="#"><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTtyJLuYzBzB8x74E2WX8xsZhcbt3tavq8IZd6Yc0l00bcKY1S9" position='relative' alt="profile"/></a>
             <ul class="nav nav-tabs child" style="font-size:20px">
-                <li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
+                <li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
                 <li class="active"><a href="/timeline">Timeline</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Friends(how many frinds you have)</a></li>
+                <li><a href="#">Friends(how many frinds)</a></li>
                 <li><a href="#">Photos</a></li>
                 <li><a href="#">More</a></li>
             </ul>
             <br>
-
                 <div class="row">
                     <div class="col-sm-4">
-                      One of three columns
-                      
+                      <div class="panel panel-default">
+                          <div class="panel-body">
+                              <h3><i class="fa fa-globe" aria-hidden="true" ></i>&nbspIntro</h3>
+                              <a href="#"><p><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                  Describe who you are
+                              </p></a>
+                              <hr style=" border: 1px solid #cccccc;">
 
-                    </div>
+                              <p>
+                                  <i class="fa fa-home" aria-hidden="true"></i>&nbsp Lives in&nbsp
+                                  <a href="#">{{vm.currentCity}}</a>
+                              </p><p>
+                                  <i class="fa fa-university" aria-hidden="true">&nbsp Studied at<a href="#">{{vm.education}}</a></i>
+                              </p>
+                          </div>
+                      </div>
+                      <div class="panel panel-default">
+                          <div class="panel-body">
+                              <h3><i class="fa fa-user" aria-hidden="true" style="color:#cc0066;"></i>&nbspFriends(how many)</h3>
+                              <p>
+                                  display image of friendslist
+                              </p>
+                          </div>
+                      </div>
+                  </div>
                     <div class="col-sm-1">
-                      One of three columns
+                      One of 1 columns
                     </div>
                     <div class="col-sm-7">
-                      One of three columns
+                      <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="color:#44cc00;"></span>
+                              &nbsp <strong>Status</strong></div>
+                          <div class="panel-body">
+                              <!-- <form class="form-horizontal"> -->
+                                  <div class="form-group">
+                                        <textarea class="form-control" rows="3" style="resize:none; border:none; width:100% !important" placeholder="What's on your mind"></textarea>
+
+                                      <!-- <div class="col-lg-12" rows="5" placeholder="What's on your mind" contenteditable="true"> -->
+                                          <!-- <textarea
+                                          class="form-control" rows="3" id="textArea" placeholder="What's on your mind"
+                                          style='border:none'></textarea> -->
+                                      <!-- </div> -->
+                                  </div>
+                              <!-- </form> -->
+                          </div>
+                          <div class="panel-footer">
+                              <a href="#"><span class="glyphicon glyphicon-camera" aria-hidden="true" style="color:grey"> </span></a>
+                              <a href="#"><span class="fa fa-user-plus fa-2x" aria-hidden="true" style="color:grey"></span></a>
+                              <a href="#"><span class="fa fa-smile-o fa-2x" aria-hidden="true" style="color:grey"> </span></a>
+                              <a href="#"><span class="fa fa-map-marker fa-2x" aria-hidden="true" style="color:grey"> </span></a>
+                              <a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color:grey"> </span></a>
+                              <button type="button" class="btn btn-primary btn-ml pull-right" >post</button>
+
+                              <!-- <ul class='accountIcon'>
+                                  <li><a href="#"><span class="glyphicon glyphicon-camera" aria-hidden="true" style="color:grey"> </span></a></li>
+                                  <li><a href="#"><span class="fa fa-user-plus fa-2x" aria-hidden="true" style="color:grey"> </span></a></li>
+                                  <li><a href="#"><span class="fa fa-smile-o fa-2x" aria-hidden="true" style="color:grey"> </span></a></li>
+                                  <li><a href="#"><span class="fa fa-map-marker fa-2x" aria-hidden="true" style="color:grey"> </span></a></li>
+                                  <li><a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color:grey"> </span></a></li>
+                                  <li><button type="button" class="btn btn-primary btn-ml pull-right" >post</button>
+</li>
+                              </ul> -->
+
+
+                          </div>
+                        </div>
+                      </div>
                     </div>
-
                 </div>
-
-
-
+            </div>
         </div>
-
-    </div>
     <div class="col-sm-1">
       One of three columns
     </div>
