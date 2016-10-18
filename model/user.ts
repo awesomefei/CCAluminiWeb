@@ -5,7 +5,7 @@ import * as Pic from './pic';
 
 export interface IUser extends mongoose.Document{
     firstname:string,
-    username:string,
+    lastname:string,
     email:string,
     password:string,
     profileImageUrl:string,
@@ -87,7 +87,7 @@ let userSchema = new mongoose.Schema({
         required:true,
         trim:true,
     },
-    surname:{
+    lastname:{
         type:String,
         required:true,
         trim:true,

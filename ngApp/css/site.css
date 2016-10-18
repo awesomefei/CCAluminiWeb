@@ -19,8 +19,21 @@ background:#1d2129;
 }
 .child img{
 position:absolute;
-  bottom:96px;
+  bottom:166px;
   right:86%;
   width:150px;
   height:150px;
+}
+.glyphicon.glyphicon-camera {
+    font-size: 23px;
+}
+.glyphicon.glyphicon-calendar {
+    font-size: 23px;
+
+}
+.panel-footer a{
+  padding:10px;
+}
+:placeholder-shown {
+    font-size: 125px;
 }
