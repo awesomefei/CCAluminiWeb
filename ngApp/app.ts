@@ -31,6 +31,12 @@ namespace ccalummiwebsite {
                 controller: ccalummiwebsite.Controllers.LoginController,
                 controllerAs: 'vm'
             })
+            .state('inbox', {
+                url: '/inbox',
+                templateUrl: '/ngApp/views/inbox.html',
+                controller: ccalummiwebsite.Controllers.MessageController,
+                controllerAs: 'vm'
+            })
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'

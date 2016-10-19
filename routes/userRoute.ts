@@ -86,6 +86,7 @@ function register(req,res,next){
                 token: req.user.generateToken(),
                 admin: req.user.admin,
                 username: req.user.username,
+                firstname: req.user.firstname
             }
 
             res.send(data);
@@ -102,6 +103,7 @@ function login(req,res){
             token: req.user.generateToken(),
             admin: req.user.admin,
             username: req.user.username,
+            firstname: req.user.firstname
         }
         console.log(data)
         res.send(data);

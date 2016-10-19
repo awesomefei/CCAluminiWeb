@@ -24,13 +24,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">CCA</a>
+                    <a class="navbar-brand" href="/">CCA</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="navbarController as vm">
                     <ul class="nav navbar-nav">
-                        <li class="active" ng-show="!vm.getUsername()"><a href="/login">Login <span class="sr-only">(current)</span></a></li>
+                        <li class="active" ng-show="!vm.getUsername()"><a href="/login">Register <span class="sr-only">(current)</span></a></li>
                         <li><a href="/account">Account</a></li>
+                        <li><a href="/inbox">Inbox</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -52,7 +53,7 @@
                                     <h6 class="loginText">
                                         Email
                                     </h6>
-                                    <input type="text" placeholder="Email" ng-model="vm.loginInfo.username">
+                                    <input type="text" class="form-control" placeholder="Email" ng-model="vm.loginInfo.username">
                                     <h6 class="forgotEmail">Forgot Email?</h6>
 
                                 </div>
@@ -61,15 +62,18 @@
                                     <h6 class="loginText">
                                         Password
                                     </h6>
-                                    <input type="password" placeholder="Password" name="name" value="" ng-model="vm.loginInfo.password">
+                                    <input type="password" class="form-control" placeholder="Password" name="name" value="" ng-model="vm.loginInfo.password">
                                     <h6 class="forgotLogin">Forgot Password?</h6>
                             </div>
-                                <button type="submit" class="btn btn-primary btn-xs">Login</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Login</button>
                         </form>
                     </div>
-                    <div ng-controller="navbarController as vm" ng-show="vm.getUsername()">
-                        <ul class="nav navbar-nav">
-                            <li ng-click="vm.logout()">Logout</li>
+                    <div ng-controller="navbarController as vm" ng-show="vm.getUsername()" >
+                        <ul class="nav navbar-nav navbar-right" id="accountLogout">
+                            <button type="button" name="Acount" class="btn btn-primary btn-md" ng-click="vm.gotoAccount()">
+                                <i class="fa fa-user" aria-hidden="true"></i>.  {{vm.firstname}}
+                            </button>
+                            <button type="button" name="logout" class="btn btn-primary btn-md" ng-click="vm.logout()">Logout</button>
                         </ul>
                     </div>
                 </div>
@@ -92,10 +96,12 @@
   <script src="/ngApp/controllers/loginController.js"></script>
   <script src="/ngApp/controllers/navbarController.js" charset="utf-8"></script>
   <script src="/ngApp/controllers/accountController.js" charset="utf-8"></script>
+  <script src="/ngApp/controllers/messageController.js" charset="utf-8"></script>
   <!-- services -->
   <script src="/ngApp/services/loginService.js"></script>
   <script src="/ngApp/services/services.js"></script>
   <script src="/ngApp/services/accountService.js" charset="utf-8"></script>
+  <script src="/ngApp/services/messageService.js" charset="utf-8"></script>
 
 </body>
 

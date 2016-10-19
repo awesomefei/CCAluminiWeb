@@ -27,6 +27,7 @@ class Database{
                 adminUser.username = 'codercamps@gmail.com'
                 adminUser.setPassword('Secret123!');
                 adminUser.admin = true;
+                adminUser.firstname ="Dan"
                 adminUser
                     .save()
                     .then(()=>{
