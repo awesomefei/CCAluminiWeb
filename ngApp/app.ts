@@ -1,6 +1,6 @@
 namespace ccalummiwebsite {
 
-    angular.module('ccalummiwebsite', ['ui.router', 'ngResource', 'ui.bootstrap']).config((
+    angular.module('ccalummiwebsite', ['ui.router', 'ngResource', 'ui.bootstrap', 'yaru22.angular-timeago']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider
@@ -61,6 +61,12 @@ namespace ccalummiwebsite {
                 url: '/inbox',
                 templateUrl: '/ngApp/views/inbox.html',
                 controller: ccalummiwebsite.Controllers.MessageController,
+                controllerAs: 'vm'
+            })
+            .state('message', {
+                url: '/message/:id',
+                templateUrl: '/ngApp/views/messageDetails.html',
+                controller: ccalummiwebsite.Controllers.MessageDetailsController,
                 controllerAs: 'vm'
             })
             .state('notFound', {

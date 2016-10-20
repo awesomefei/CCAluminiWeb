@@ -1,8 +1,35 @@
 <div class="container">
-    <div class="col-md-3">
-        <img src="http://istc-pc-test-media.cs.washington.edu/images/default-profile-pic.png"/>
+    <div class="row">
+        <h3>Title</h3>
+        <hr>
     </div>
-    <div class="col-md-9">
-        
+    <div class="col-md-1">
+        <img src="http://istc-pc-test-media.cs.washington.edu/images/default-profile-pic.png" width="50px"/>
+    </div>
+    <div class="col-md-11">
+        <p>
+            <strong>From:</strong> {{vm.message.userSent.firstname}} {{vm.message.userSend.lastname}}
+        </p>
+        <p>
+            <strong>To:</strong> {{vm.message.userRecieve.firstNam}} {{vm.message.userRecieve.lastname}}
+        </p>
+        <p>
+            <strong>Sent:</strong> {{vm.message.timeCreate | timeAgo}}
+        </p>
+        <br>
+        <p>
+            {{vm.message.message}}
+        </p>
+        <br>
+        <p>
+            -{{vm.message.userSent.firstname}}
+        </p>
+        <hr>
+        <div class="form-group">
+            <textarea class='form-control' rows="8" cols="40"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-primary btn-sm" name="button">Reply</button>
+        </div>
     </div>
 </div>
