@@ -1,22 +1,13 @@
 <div class="container">
     <table class="table table-striped table-hover">
-        <thead>
+        <thead >
             <th>From</th> <th>Title</th> <th>Date</th>
         </thead>
-        <tr class="warning" ng-click="vm.getMessageDetails(id)">
-            <td>Truong</td> <td>Career Fair this afternoon</td><td>One hour ago</td>
+        <tr class="warning" ng-click="vm.getMessageDetails(vm.messages._id)"ng-repeat="m in vm.messages">
+            <div class="container-fluid" ng-click="vm.getMessageDetails(m._id)">
+                <td>{{m.userRecieve.firstname}}</td> <td>{{m.title}}</td><td>{{m.timeCreate | timeAgo}}</td>
+            </div>
         </tr>
-        <tr class="warning">
-            <td>Ann</td><td>Tuesdays game</td><td>One hour ago</td>
-        </tr>
-        <tr class="warning">
-            <td>Dan</td><td>Career Fair this afternoon</td><td>One hour ago</td>
-        </tr>
-        <tr class="warning">
-            <td>Truong</td><td>Career Fair this afternoon</td><td>One hour ago</td>
-        </tr>
-        <tr class="warning">
-            <td>Truong</td><td>Career Fair this afternoon</td><td>One hour ago</td>
-        </tr>
+
     </table>
 </div>

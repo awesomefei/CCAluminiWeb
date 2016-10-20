@@ -20,7 +20,7 @@ class Database{
         })
 
         User
-        .findOne({email: 'codercamps@gmail.com'})
+        .findOne({username: 'codercamps@gmail.com'})
         .then((user)=>{
             if(!user) {
                 let adminUser = new User();

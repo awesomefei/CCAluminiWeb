@@ -1,5 +1,6 @@
 import * as mongoose from 'mongoose';
 import * as User from './user';
+import Message from './message'
 
 export interface IMessage extends mongoose.Document {
     userSend: string,
@@ -30,6 +31,7 @@ let messageSchema = new mongoose.Schema ({
         type: Date,
         required: true
     }
+
 });
 
 export default mongoose.model<IMessage>('Message', messageSchema);

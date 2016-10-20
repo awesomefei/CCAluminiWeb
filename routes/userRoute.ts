@@ -6,6 +6,27 @@ import User from '../model/user';
 
 let userRouter = express.Router();
 
+
+
+//READ users
+userRouter.get('/', (req,res)=>{
+    User.find().then((users)=>{
+        res.send(users)
+    }).catch(()=>{
+        res.status(500);
+    })
+})
+
+//delete users
+userRouter.delete('/:id', (req,res)=>{
+    User.findByIdAndRemove(req.params['id']).then((user)=>{
+        res.sendStatus(200);
+    }).catch(()=>{
+        res.sendStatus(400);
+    })
+})
+
+//LOGIN AND REGISTRATION
 let LocalStrategy = passportLocal.Strategy;
 
 passport.serializeUser(function(user, done){

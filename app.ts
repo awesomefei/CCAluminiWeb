@@ -15,6 +15,7 @@ import Database from './db';
 import routes from './routes/index';
 import users from './routes/users';
 import userRouter from './routes/userRoute';
+import messageRouter from './routes/messageRoute';
 
 let app = express();
 Database.connect();
@@ -44,6 +45,7 @@ app.use('/api', express.static(path.join(__dirname, 'api')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/api/users', userRouter)
+app.use('/api/messages', messageRouter)
 
 
 // redirect 404 to home for the sake of AngularJS client-side routes
