@@ -11,5 +11,5 @@ namespace ccalummiwebsite.Services{
 
         }
     }
-    angular.module('ccalummiwebsite').service('accountervice', AccountService);
+    angular.module('ccalummiwebsite').service('accountService', AccountService);
 }
