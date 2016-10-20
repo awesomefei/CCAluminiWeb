@@ -7,9 +7,6 @@ namespace ccalummiwebsite.Controllers {
                     private $state: ng.ui.IStateService){
 
         }
-
-
-
         saveUser(){
             this.loginService.saveUser(this.user)
             .then(()=>{

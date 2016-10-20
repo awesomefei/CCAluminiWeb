@@ -9,9 +9,40 @@ namespace ccalummiwebsite {
         $stateProvider
             .state('account', {
                 url: '/account',
-                templateUrl: '/ngApp/views/account.html',
+                templateUrl: '/ngApp/views/account/account.html',
                 controller: ccalummiwebsite.Controllers.AccountController,
                 controllerAs: 'vm'
+            })
+            .state('account.timeline', {
+                // url: '/account/about',
+                templateUrl: '/ngApp/views/account/account.timeline.html',
+                controller: ccalummiwebsite.Controllers.AccountController,
+                controllerAs: 'vm',
+
+            })
+            .state('account.about', {
+                templateUrl: '/ngApp/views/account/account.about.html',
+                controller: ccalummiwebsite.Controllers.AccountAboutController,
+                controllerAs: 'vm',
+
+            })
+            .state('account.photo', {
+                templateUrl: '/ngApp/views/account/account.photo.html',
+                controller: ccalummiwebsite.Controllers.AccountPhotoController,
+                controllerAs: 'vm',
+
+            })
+            .state('account.checkin', {
+                templateUrl: '/ngApp/views/account/account.checkin.html',
+                controller: ccalummiwebsite.Controllers.AccountCheckinController,
+                controllerAs: 'vm',
+
+            })
+            .state('account.about.detailEdit', {
+                templateUrl: '/ngApp/views/about/about.detailEdit.html',
+                controller: ccalummiwebsite.Controllers.AccountAboutDetailEditController,
+                controllerAs: 'vm',
+
             })
             .state('home', {
                 url: '/',
@@ -19,12 +50,7 @@ namespace ccalummiwebsite {
                 controller: ccalummiwebsite.Controllers.HomeController,
                 controllerAs: 'controller'
             })
-            .state('about', {
-                url: '/about',
-                templateUrl: '/ngApp/views/about.html',
-                controller: ccalummiwebsite.Controllers.AboutController,
-                controllerAs: 'controller'
-            })
+
             .state('login', {
                 url: '/login',
                 templateUrl: '/ngApp/views/login.html',
