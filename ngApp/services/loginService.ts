@@ -18,10 +18,12 @@ namespace ccalummiwebsite.Services {
                     let token = data.data.token;
                     let admin = data.data.admin;
                     let username = data.data.username;
+                    let firstname = data.data.firstname
 
                     this.$window.localStorage.setItem('token', token);
                     this.$window.localStorage.setItem('username', username);
                     this.$window.localStorage.setItem('admin', admin);
+                    this.$window.localStorage.setItem('firstname', firstname);
 
                     resolve()
                 })
@@ -35,6 +37,8 @@ namespace ccalummiwebsite.Services {
             this.$window.localStorage.removeItem('token');
             this.$window.localStorage.removeItem('username');
             this.$window.localStorage.removeItem('admin');
+            this.$window.localStorage.removeItem('firstname');
+            this.$window.localStorage.removeItem('email');
         }
 
         saveUser(user){
@@ -46,9 +50,11 @@ namespace ccalummiwebsite.Services {
                     console.log(data);
                     let admin = data.data.admin;
                     let username = data.data.username;
+                    let firstname = data.data.firstname;
 
                     this.$window.localStorage.setItem('username', username);
                     this.$window.localStorage.setItem('admin', admin);
+                    this.$window.localStorage.setItem('firstname', firstname);
 
                     resolve()
                 })
@@ -64,6 +70,10 @@ namespace ccalummiwebsite.Services {
 
         getUsername(){
             return this.$window.localStorage.getItem('username')
+        }
+
+        getFirstname(){
+            return this.$window.localStorage.getItem('firstname')
         }
     }
     angular.module('ccalummiwebsite').service('loginService', LoginService)

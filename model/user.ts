@@ -40,7 +40,7 @@ let userSchema = new mongoose.Schema({
         ref:"Pic"
     }],
     //only user Id
-    firendsList:[{
+    friendsList:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
     }],

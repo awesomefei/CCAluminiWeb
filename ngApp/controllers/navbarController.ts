@@ -1,10 +1,11 @@
 namespace ccalummiwebsite.Contollers {
     class NavbarController {
         public loginInfo;
+        public firstname;
 
         constructor(private loginService: ccalummiwebsite.Services.LoginService,
                     private $state: ng.ui.IStateService){
-
+                        this.getFirstname();
         }
 
         getUsername(){
@@ -25,6 +26,15 @@ namespace ccalummiwebsite.Contollers {
 
         logout(){
             this.loginService.logout();
+            this.$state.go('login');
+        }
+
+        gotoAccount(){
+            this.$state.go('account');
+        }
+
+        getFirstname(){
+            this.firstname = this.loginService.getFirstname();
         }
     }
     angular.module('ccalummiwebsite').controller('navbarController', NavbarController);
