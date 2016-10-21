@@ -45,7 +45,7 @@ passport.use(new LocalStrategy(function (username, password, done){
         //if no user found, send back error message
         if(!user) {
             console.log('no user found')
-            return done(null, false, {message: 'incorrect email'});
+             return done(null, false, {message: 'incorrect email'});
         }
         //if password doesn't match, send back error message
         if(!user.validatePassword(password)) {
@@ -122,6 +122,8 @@ function register(req,res,next){
 userRouter.post('/login', passport.authenticate('local', {failureRedirect: '/login'}), login);
 
 function login(req,res){
+    console.log('--------------------')
+    console.log(req.isAuthenticated());
     if(req.isAuthenticated()){
         let data ={
             token: req.user.generateToken(),

@@ -15,6 +15,7 @@ namespace ccalummiwebsite.Services {
                 this.$http
                 .post('/api/users/login', loginInfo)
                 .then((data:any)=>{
+                    console.log(data)
                     let token = data.data.token;
                     let admin = data.data.admin;
                     let username = data.data.username;
@@ -24,7 +25,6 @@ namespace ccalummiwebsite.Services {
                     this.$window.localStorage.setItem('username', username);
                     this.$window.localStorage.setItem('admin', admin);
                     this.$window.localStorage.setItem('firstname', firstname);
-
                     resolve()
                 })
                 .catch((err)=>{
