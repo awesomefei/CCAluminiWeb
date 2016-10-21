@@ -47,11 +47,13 @@ namespace ccalummiwebsite.Services {
                 this.$http
                 .post('/api/users/register', user)
                 .then((data:any)=>{
-                    console.log(data);
+
+                    let token = data.data.token;
                     let admin = data.data.admin;
                     let username = data.data.username;
                     let firstname = data.data.firstname;
 
+                    this.$window.localStorage.setItem('token', token);
                     this.$window.localStorage.setItem('username', username);
                     this.$window.localStorage.setItem('admin', admin);
                     this.$window.localStorage.setItem('firstname', firstname);

@@ -8,16 +8,26 @@ let messageRouter = express.Router();
 let ObjectId = mongodb.ObjectID;
 
 //read message
+messageRouter.get('/', authorize, (req,res)=>{
+
+    Message.find({userRecieve: req.user.id}).populate('userSend userRecieve')
+    .then((messages)=>{
+        res.send(messages)
+    }).catch((err)=>{
+        res.send(err);
+    })
+})
+
 messageRouter.get('/', (req,res)=>{
-    Message.find().populate('userRecieve').then((messages)=>{
-        res.send(messages);
-    }).catch(()=>{
-        res.sendStatus(500);
+    Message.find().then((messages)=>{
+        res.send(messages)
+    }).catch((err)=>{
+        res.send(err)
     })
 })
 
 messageRouter.get('/:id', (req,res)=>{
-    Message.findById(req.params['id'])
+    Message.findById(req.params['id']).populate('userSend userRecieve')
     .then((message)=>{
         res.send(message)
     }).catch((err)=>{
@@ -27,6 +37,7 @@ messageRouter.get('/:id', (req,res)=>{
 
 //create messageRouter
 messageRouter.post('/:recieverId', authorize, (req,res)=>{
+
 
     let message = new Message();
 
@@ -38,7 +49,8 @@ messageRouter.post('/:recieverId', authorize, (req,res)=>{
 
     message.save()
     .then((message)=>{
-        res.send(message)
+        res.send(message);
+        console.log("Message was saved")
     }).catch((err)=>{
         res.status(400).send(err)
     })
@@ -53,7 +65,6 @@ function authorize(req, res, next){
             res.sendStatus(401)
         } else {
             req.user = decoded;
-            console.log(decoded);
             next();
         }
     })

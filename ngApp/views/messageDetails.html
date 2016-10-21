@@ -1,20 +1,17 @@
 <div class="container">
     <div class="row">
-        <h3>Title</h3>
+        <h3>{{vm.message.title}}</h3>
         <hr>
     </div>
     <div class="col-md-1">
         <img src="http://istc-pc-test-media.cs.washington.edu/images/default-profile-pic.png" width="50px"/>
     </div>
-    <div class="col-md-11">
+    <div class="col-md-11" >
         <p>
-            <strong>From:</strong> {{vm.message.userSent.firstname}} {{vm.message.userSend.lastname}}
+            <strong>From:</strong> {{vm.message.userSend.username}}
         </p>
         <p>
-            <strong>To:</strong> {{vm.message.userRecieve.firstNam}} {{vm.message.userRecieve.lastname}}
-        </p>
-        <p>
-            <strong>Sent:</strong> {{vm.message.timeCreate | timeAgo}}
+            <strong>Sent:</strong> <time-ago from-time='{{vm.message.timeCreate}}'></time-ago>
         </p>
         <br>
         <p>
@@ -22,7 +19,7 @@
         </p>
         <br>
         <p>
-            -{{vm.message.userSent.firstname}}
+            -{{vm.message.userSend.firstname}}
         </p>
         <hr>
         <div class="form-group">
