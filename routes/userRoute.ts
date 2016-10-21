@@ -64,7 +64,7 @@ passport.use(new LocalStrategy(function (username, password, done){
 
 userRouter.post('/register', register,  passport.authenticate('local', {failureRedirect: '/login'}), login);
 
-function register(req,res,next){
+ function register(req,res,next){
 
     req.checkBody('firstname', 'Firstname is required').notEmpty();
     req.checkBody('lastname', 'Lastname is required').notEmpty();
@@ -78,7 +78,6 @@ function register(req,res,next){
         res.status(400).send(errors);
     } else {
         let newUser = new User();
-        console.log(req);
         newUser.firstname = req.body.firstname;
         newUser.lastname = req.body.lastname;
         newUser.birthdateMonth = req.body.birthdateMonth;
@@ -86,7 +85,7 @@ function register(req,res,next){
         newUser.birthdateYear = req.body.birthdateYear;
         newUser.username = req.body.username;
         newUser.setPassword(req.body.password);
-        console.log(newUser.password);
+
 
         newUser.save()
         .then((user)=>{
@@ -119,7 +118,7 @@ function register(req,res,next){
 
 }
 
-userRouter.post('/login', passport.authenticate('local', {failureRedirect: '/login'}), login);
+userRouter.post('/login', passport.authenticate('local'), login);
 
 function login(req,res){
     console.log('--------------------')
