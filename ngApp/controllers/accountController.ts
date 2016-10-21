@@ -3,14 +3,32 @@ namespace ccalummiwebsite.Controllers{
         public message = 'hello from AccountController';
         public userAccount;
         private id;
+        public file;
 
         constructor(
+            private filepickerService,
+            private $scope: ng.IScope,
             private $state:ng.ui.IStateService
         //     private accountService: ccalummiwebsite.Services.AccountService,
          ){
              this.$state.go('account.timeline')
         //     this.gerUserAccount();
          }
+         public pickFile() {
+             console.log('!!!!!!!!!!!!pickFile()');
+
+            this.filepickerService.pick(
+                { mimetype: 'image/*' },
+                this.fileUploaded.bind(this)
+            );
+        }
+        public fileUploaded(file) {
+            console.log('!!!!!!!!!!!!fileUploaded()')
+            // save file url to database
+            this.file = file;
+            this.$scope.$apply(); // force page to update
+        }
+
         // gerUserAccount(){
         //     this.userAccount = this.accountService.getAccountOnService({id:this.id});
         // }

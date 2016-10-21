@@ -1,11 +1,13 @@
 namespace ccalummiwebsite {
 
-    angular.module('ccalummiwebsite', ['ui.router', 'ngResource', 'ui.bootstrap', 'yaru22.angular-timeago']).config((
+    angular.module('ccalummiwebsite', ['ui.router', 'ngResource', 'ui.bootstrap', 'yaru22.angular-timeago','angular-filepicker']).config((
+        filepickerProvider,
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider,
         $httpProvider: ng.IHttpProvider
     ) => {
+        filepickerProvider.setKey('AKajIDUelSihS59ufHbW1z'); 
         // Define routes
         $stateProvider
             .state('account', {
