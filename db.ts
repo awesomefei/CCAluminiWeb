@@ -19,30 +19,30 @@ class Database{
             console.log('connected to database!!!');
         })
 
-        User
-        .findOne({username: 'codercamps@gmail.com'})
-        .then((user)=>{
-            if(!user) {
-                let adminUser = new User();
-                adminUser.username = 'codercamps@gmail.com'
-                adminUser.setPassword('Secret123!');
-                adminUser.admin = true;
-                adminUser.firstname ="Dan"
-                adminUser
-                    .save()
-                    .then(()=>{
-                        console.log('Admin successfully created');
-                    })
-                    .catch(()=>{
-                        console.log('Admin creation went wrong')
-                    })
-            } else {
-                console.log('Admin already exists in Database')
-            }
-        })
-        .catch((err)=>{
-            console.log(err)
-        });
+        // User
+        // .findOne({username:'codercamps@gmail.com'})
+        // .then((user)=>{
+        //     if(!user) {
+        //         let adminUser = new User();
+        //         adminUser.username = 'codercamps@gmail.com'
+        //         adminUser.setPassword('Secret123!');
+        //         adminUser.admin = true;
+        //         adminUser.firstname ="Dan"
+        //         adminUser
+        //             .save()
+        //             .then(()=>{
+        //                 console.log('Admin successfully created');
+        //             })
+        //             .catch(()=>{
+        //                 console.log('Admin creation went wrong')
+        //             })
+        //     } else {
+        //         console.log('Admin already exists in Database')
+        //     }
+        // })
+        // .catch((err)=>{
+        //     console.log(err)
+        // });
     }
 }
 

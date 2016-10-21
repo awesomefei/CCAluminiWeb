@@ -111,6 +111,9 @@ function register(req,res,next){
             }
 
             res.send(data);
+            console.log(data.token)
+        } else {
+            res.send('registration failed')
         }
     }
 
@@ -126,7 +129,6 @@ function login(req,res){
             username: req.user.username,
             firstname: req.user.firstname
         }
-        console.log(data)
         res.send(data);
 
     } else {

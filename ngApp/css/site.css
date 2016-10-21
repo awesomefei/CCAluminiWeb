@@ -162,3 +162,9 @@ position:absolute;;
 .panel-footer a{
   padding:10px;
 }
+
+/*CREATE MESSAGE*/
+#createMessageHeader {
+    background-color: #d34615;
+    color: white;
+}

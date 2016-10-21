@@ -3,13 +3,15 @@ namespace ccalummiwebsite {
     angular.module('ccalummiwebsite', ['ui.router', 'ngResource', 'ui.bootstrap', 'yaru22.angular-timeago']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
-        $locationProvider: ng.ILocationProvider
+        $locationProvider: ng.ILocationProvider,
+        $httpProvider: ng.IHttpProvider
     ) => {
         // Define routes
         $stateProvider
             .state('account', {
                 url: '/account',
                 templateUrl: '/ngApp/views/account/account.html',
+                // templateUrl: '/ngApp/views/account/account.html',
                 controller: ccalummiwebsite.Controllers.AccountController,
                 controllerAs: 'vm'
             })
@@ -79,8 +81,28 @@ namespace ccalummiwebsite {
 
         // Enable HTML5 navigation
         $locationProvider.html5Mode(true);
-    });
 
+        $httpProvider.interceptors.push("BearerAuthInterceptor")
+    });
+    angular.module('ccalummiwebsite').factory('BearerAuthInterceptor',
+   ($window:ng.IWindowService, $q:ng.IQService)=>{
+       return {
+           request: function(config){
+               config.headers = config.headers || {};
+
+               if($window.localStorage.getItem('token')){
+                   config.headers.Authorization = 'Bearer ' + $window.localStorage.getItem('token');
+               }
+               return config || $q.when(config);
+           },
+           response: function(response){
+               if(response.status === 401) {
+
+               }
+               return response || $q.when(response);
+           }
+       }
+   });
 
 
 }

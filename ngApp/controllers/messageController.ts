@@ -3,7 +3,8 @@ namespace ccalummiwebsite.Controllers {
         public messages;
 
         constructor(private messageService: ccalummiwebsite.Services.MessageService,
-                    private $state:ng.ui.IStateService){
+                    private $state:ng.ui.IStateService,
+                    private $uibModal:ng.ui.bootstrap.IModalService){
                         this.getMessages();
         }
 
@@ -13,6 +14,15 @@ namespace ccalummiwebsite.Controllers {
         getMessageDetails(id){
             console.log(id);
             this.$state.go('message', {id:id});
+        }
+
+        createMessage(){
+            this.$uibModal.open({
+                templateUrl: 'ngApp/views/createMessage.html',
+                controller: ccalummiwebsite.Controllers.CreateMessageController,
+                controllerAs: 'vm',
+                size: 'md'
+            });
         }
     }
 
@@ -29,6 +39,40 @@ namespace ccalummiwebsite.Controllers {
         getMessage(messId){
             this.message = this.messageService.getMessage(messId);
             console.log(messId);
+        }
+    }
+
+    export class CreateMessageController {
+        public message;
+        public users;
+        public formMode;
+        public userInfo;
+
+        constructor(private messageService: ccalummiwebsite.Services.MessageService,
+                    private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance,
+                    private userService: ccalummiwebsite.Services.UserService){
+                        this.getUsers();
+                        this.formMode = false;
+        }
+
+        toggleformMode(){
+            this.formMode = !this.formMode
+        }
+
+        getUserId(){
+            console.log(this.userInfo)
+        }
+
+        getUsers(){
+            this.users = this.userService.getUsers()
+        }
+
+        saveMessage(){
+            this.messageService.saveMessage(this.userInfo._id, this.message).then(()=>{
+                this.$uibModalInstance.close();
+            }).catch(()=>{
+                console.log('Error in saving message')
+            })
         }
     }
 }
