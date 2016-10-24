@@ -144,7 +144,7 @@ userSchema.method('validatePassword', function(password){
 });
 
 //makes a token, don't put sensitive info in here
-userSchema.method('5', function(){
+userSchema.method('generateToken', function(){
     return jwt.sign({
         id: this._id,
         username: this.username,
