@@ -56,6 +56,8 @@ messageRouter.post('/:recieverId', authorize, (req,res)=>{
     })
 })
 
+//reply to message
+
 function authorize(req, res, next){
 
     let token = req['token'];

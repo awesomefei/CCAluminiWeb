@@ -7,7 +7,7 @@ export interface IMessage extends mongoose.Document {
     userRecieve: string,
     title: string,
     message: string,
-    messages: Message.IMessage[]
+    messages: IMessage[];
     timeCreate: Date
 }
 
@@ -28,6 +28,10 @@ let messageSchema = new mongoose.Schema ({
         type: String,
         required: true
     },
+    messages: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Message'
+    }],
     timeCreate: {
         type: Date,
         required: true
