@@ -3,11 +3,36 @@ import * as passport from 'passport';
 import * as passportLocal from 'passport-local';
 import * as jwt from 'jsonwebtoken';
 import User from '../model/user';
+import * as mongodb from 'mongodb';
 
 let userRouter = express.Router();
+let ObjectId = mongodb.ObjectID;
+
+//get user by id and update
+userRouter.put('/image', authorize,(req, res) =>{
+    // res.send(req.body);
+    console.log('!!!!!!!!!!!!!!!! req.user.username' + req.user.username);
+    console.log('!!!!!!!!!!!!!!!! req.user.url' + req.body.profileImageUrl);
+
+    User.findOneAndUpdate({
+
+        username:req.user.username},
+        {profileImageUrl:req.body.profileImageUrl},
+        function(err,user){
+            if (err) {res.sendStatus(404)}
+            else{
+                res.status(200).send(user);
+                // console.log("!!!!!!!!!!!!!userRouter.put " + user);
+            }
+            // we have the updated user returned to us
+
+    })
 
 
 
+})
+//Read one user
+userRouter.get('/')
 //READ users
 userRouter.get('/', (req,res)=>{
     User.find().then((users)=>{
@@ -120,11 +145,12 @@ userRouter.post('/register', register,  passport.authenticate('local', {failureR
 
 userRouter.post('/login', passport.authenticate('local'), login);
 
+
+
 function login(req,res){
-    console.log('--------------------')
-    console.log(req.isAuthenticated());
     if(req.isAuthenticated()){
         let data ={
+
             token: req.user.generateToken(),
             admin: req.user.admin,
             username: req.user.username,
@@ -140,11 +166,13 @@ function login(req,res){
 
 function authorize(req, res, next){
     let token = req['token'];
-
+    console.log('@@@@@@@@@@@@@@@@@@@@@'+token);
     jwt.verify(token, 'SuperSecret', function(err,decoded){
         if(err){
+            console.log('@@@@@@@@@@@@@@@@@@@@@'+err);
             res.sendStatus(401)
         } else {
+            console.log(decoded);
             req.user = decoded;
             console.log(decoded);
             next();

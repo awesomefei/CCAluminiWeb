@@ -1,5 +1,6 @@
 namespace ccalummiwebsite.Controllers{
     export class AccountController{
+        public imgUrl = "http://whatsappdp.net/wp-content/uploads/2016/03/Best-whatsapp-profile-picture.jpg";
         public message = 'hello from AccountController';
         public userAccount;
         private id;
@@ -8,26 +9,32 @@ namespace ccalummiwebsite.Controllers{
         constructor(
             private filepickerService,
             private $scope: ng.IScope,
-            private $state:ng.ui.IStateService
-        //     private accountService: ccalummiwebsite.Services.AccountService,
+            private $state:ng.ui.IStateService,
+            private accountService: ccalummiwebsite.Services.AccountService,
          ){
              this.$state.go('account.timeline')
         //     this.gerUserAccount();
          }
          public pickFile() {
-             console.log('!!!!!!!!!!!!pickFile()');
 
-            this.filepickerService.pick(
-                { mimetype: 'image/*' },
-                this.fileUploaded.bind(this)
-            );
-        }
-        public fileUploaded(file) {
-            console.log('!!!!!!!!!!!!fileUploaded()')
-            // save file url to database
-            this.file = file;
-            this.$scope.$apply(); // force page to update
-        }
+           this.filepickerService.pick(
+               { mimetype: 'image/*' },
+               this.fileUploaded.bind(this)
+           );
+       }
+       public fileUploaded(file) {
+           // console.log(file)
+           this.file = file;
+           this.imgUrl = file.url;
+           this.accountService.updateimgUrlOnService(this.imgUrl)
+           .then(() =>{
+             this.$scope.$apply()
+           })
+
+        //    console.log(this.imgUrl);
+           // force page to update
+       }
+
 
         // gerUserAccount(){
         //     this.userAccount = this.accountService.getAccountOnService({id:this.id});
