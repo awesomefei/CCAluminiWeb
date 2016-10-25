@@ -6,14 +6,22 @@ import User from '../model/user';
 
 let userRouter = express.Router();
 
-
-
 //READ users
 userRouter.get('/', (req,res)=>{
     User.find().then((users)=>{
         res.send(users)
     }).catch(()=>{
         res.status(500);
+    })
+});
+
+userRouter.get('/user', authorize, (req,res)=>{
+    User.findOne({username: req.user.username})
+    .then((user)=>{
+        res.send(user);
+    }).catch(()=>{
+        res.status(500);
+        console.log("User not found");
     })
 })
 

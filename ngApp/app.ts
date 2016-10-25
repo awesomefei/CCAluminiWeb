@@ -7,7 +7,7 @@ namespace ccalummiwebsite {
         $locationProvider: ng.ILocationProvider,
         $httpProvider: ng.IHttpProvider
     ) => {
-        filepickerProvider.setKey('AKajIDUelSihS59ufHbW1z'); 
+        filepickerProvider.setKey('AKajIDUelSihS59ufHbW1z');
         // Define routes
         $stateProvider
             .state('account', {
@@ -51,8 +51,8 @@ namespace ccalummiwebsite {
             .state('home', {
                 url: '/',
                 templateUrl: '/ngApp/views/home.html',
-                controller: ccalummiwebsite.Controllers.HomeController,
-                controllerAs: 'controller'
+                controller: ccalummiwebsite.Controllers.ActivityController,
+                controllerAs: 'vm'
             })
 
             .state('login', {
