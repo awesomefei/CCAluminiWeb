@@ -15,16 +15,17 @@ namespace ccalummiwebsite.Services {
                 this.$http
                 .post('/api/users/login', loginInfo)
                 .then((data:any)=>{
-                    console.log(data)
+                    console.log('login loginInfor '+data.data.username);
                     let token = data.data.token;
                     let admin = data.data.admin;
                     let username = data.data.username;
-                    let firstname = data.data.firstname
+                    let firstname = data.data.firstname;
 
                     this.$window.localStorage.setItem('token', token);
                     this.$window.localStorage.setItem('username', username);
                     this.$window.localStorage.setItem('admin', admin);
                     this.$window.localStorage.setItem('firstname', firstname);
+
                     resolve()
                 })
                 .catch((err)=>{

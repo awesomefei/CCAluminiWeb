@@ -3,6 +3,7 @@ import * as passport from 'passport';
 import * as passportLocal from 'passport-local';
 import * as jwt from 'jsonwebtoken';
 import User from '../model/user';
+import * as mongodb from 'mongodb';
 
 let userRouter = express.Router();
 
@@ -70,6 +71,105 @@ passport.use(new LocalStrategy(function (username, password, done){
 }))
 
 
+//get user by id and update
+userRouter.put('/image', authorize,(req, res) =>{
+    User.findOneAndUpdate({
+
+        username:req.user.username},
+        {profileImageUrl:req.body.profileImageUrl},
+        function(err,user){
+            if (err) {res.sendStatus(404)}
+            else{
+                res.status(200).send(user);
+                // console.log("!!!!!!!!!!!!!userRouter.put " + user);
+            }
+            // we have the updated user returned to us
+
+    })
+})
+
+userRouter.put('/detail', authorize,(req, res) =>{
+    User.findOneAndUpdate(
+        {username:req.user.username},
+        {detailsAboutUser:req.body.detailsAboutUser},
+        function(err,user){
+            if (err) {
+                console.log(err);
+                res.sendStatus(404)}
+            else{
+                res.status(200).send(user);
+                // console.log("!!!!!!!!!!!!!userRouter.put " + user);
+            }
+            // we have the updated user returned to us
+
+    })
+})
+userRouter.put('/work', authorize,(req, res) =>{
+    console.log("!!!!!!!!!!!!!workingExperience.put " + req.body.workingExperience);
+    User.findOneAndUpdate(
+        {username:req.user.username},
+        {workingExperience:req.body.workingExperience})
+        .populate('friendsList')
+        .populate('pics')
+        .then((user) =>{
+            res.status(200).send(user);
+        })
+        .catch((err) =>{
+            console.log(err);
+            res.sendStatus(404)
+        })
+})
+
+
+userRouter.put('/education', authorize,(req, res) =>{
+    console.log("!!!!!!!!!!!!!userrouter.  " + req.body.education);
+    User.findOneAndUpdate(
+        {username:req.user.username},
+        {education:req.body.education},
+        function(err,user){
+            if (err) {
+                console.log(err);
+                res.sendStatus(404)}
+            else{
+                res.status(200).send(user);
+            }
+
+    })
+})
+
+
+//Read one user
+userRouter.get('/account', authorize, (req, res) =>{
+    User.findById(req.user.id)
+    .then((data) =>{
+        data.password = '';
+        res.send(data);
+    })
+    .catch(() =>{
+        res.send(400);
+    })
+})
+//READ users
+userRouter.get('/', (req,res)=>{
+    User.find().then((users)=>{
+        res.send(users)
+    }).catch(()=>{
+        res.status(500);
+    })
+})
+
+//delete users
+userRouter.delete('/:id', (req,res)=>{
+    User.findByIdAndRemove(req.params['id']).then((user)=>{
+        res.sendStatus(200);
+    }).catch(()=>{
+        res.sendStatus(400);
+    })
+})
+
+
+
+
 userRouter.post('/register', register,  passport.authenticate('local', {failureRedirect: '/login'}), login);
 
  function register(req,res,next){
@@ -128,11 +228,12 @@ userRouter.post('/register', register,  passport.authenticate('local', {failureR
 
 userRouter.post('/login', passport.authenticate('local'), login);
 
+
+
 function login(req,res){
-    console.log('--------------------')
-    console.log(req.isAuthenticated());
     if(req.isAuthenticated()){
         let data ={
+
             token: req.user.generateToken(),
             admin: req.user.admin,
             username: req.user.username,
@@ -148,16 +249,19 @@ function login(req,res){
 
 function authorize(req, res, next){
     let token = req['token'];
-
     jwt.verify(token, 'SuperSecret', function(err,decoded){
         if(err){
             res.sendStatus(401)
         } else {
             req.user = decoded;
-            console.log(decoded);
             next();
         }
     })
 }
+// userRouter.post('/addPic', (req, res) =>{
+//     console.log('!!!!!!!!!!!!!!!!!!!!!!!!!');
+//     User.
+//
+// })
 
 export default userRouter;

@@ -24,6 +24,13 @@ namespace ccalummiwebsite {
                 controllerAs: 'vm',
 
             })
+            .state('account.friends', {
+                // url: '/account/about',
+                templateUrl: '/ngApp/views/account/account.friends.html',
+                controller: ccalummiwebsite.Controllers.FriendsController,
+                controllerAs: 'vm',
+
+            })
             .state('account.about', {
                 templateUrl: '/ngApp/views/account/account.about.html',
                 controller: ccalummiwebsite.Controllers.AccountAboutController,
@@ -48,6 +55,14 @@ namespace ccalummiwebsite {
                 controllerAs: 'vm',
 
             })
+            .state('account.about.editworkandeducation', {
+                templateUrl: '/ngApp/views/about/about.editworkandeducation.html',
+                controller: ccalummiwebsite.Controllers.EditworkandeducationController,
+                controllerAs: 'vm',
+
+            })
+
+
             .state('home', {
                 url: '/',
                 templateUrl: '/ngApp/views/home.html',

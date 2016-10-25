@@ -1,5 +1,6 @@
 namespace ccalummiwebsite.Controllers{
     export class AccountController{
+        public imgUrl;
         public message = 'hello from AccountController';
         public userAccount;
         private id;
@@ -8,43 +9,122 @@ namespace ccalummiwebsite.Controllers{
         constructor(
             private filepickerService,
             private $scope: ng.IScope,
-            private $state:ng.ui.IStateService
-        //     private accountService: ccalummiwebsite.Services.AccountService,
+            private $state:ng.ui.IStateService,
+            private accountService: ccalummiwebsite.Services.AccountService,
          ){
+             this.getUserAccount();
              this.$state.go('account.timeline')
-        //     this.gerUserAccount();
          }
          public pickFile() {
-             console.log('!!!!!!!!!!!!pickFile()');
 
-            this.filepickerService.pick(
-                { mimetype: 'image/*' },
-                this.fileUploaded.bind(this)
-            );
-        }
-        public fileUploaded(file) {
-            console.log('!!!!!!!!!!!!fileUploaded()')
-            // save file url to database
-            this.file = file;
-            this.$scope.$apply(); // force page to update
-        }
+           this.filepickerService.pick(
+               { mimetype: 'image/*' },
+               this.fileUploaded.bind(this)
+           );
+       }
+       public fileUploaded(file) {
+           // console.log(file)
+           this.file = file;
+           this.imgUrl = file.url;
+           this.accountService.updateimgUrlOnService(this.imgUrl)
+           .then(() =>{
+            this.getUserAccount();
+           })
+       }
 
-        // gerUserAccount(){
-        //     this.userAccount = this.accountService.getAccountOnService({id:this.id});
-        // }
+        getUserAccount(){
+            this.userAccount = this.accountService.getAccountOnService();
+        }
     }
     export class AccountAboutController{
         public message = 'Hello from the account about page!';
+        public userAccount;
+
+        constructor(
+            private accountService: ccalummiwebsite.Services.AccountService,
+         ){
+             this.getUserAccount();
+         }
+         getUserAccount(){
+             this.userAccount = this.accountService.getAccountOnService();
+         }
 
     }
     export class AccountAboutDetailEditController{
         public message = 'Hello from the detailEdit controller';
+        public userAccount;
+        public detailsAboutUser;
+
+        constructor(
+            private accountService: ccalummiwebsite.Services.AccountService,
+            private $state:ng.ui.IStateService,
+
+         ){
+             this.getUserAccount();
+         }
+         getUserAccount(){
+             this.userAccount = this.accountService.getAccountOnService();
+         }
+         editDetailsAboutUser(){
+             this.accountService.editDetailsAboutUserOnService(this.detailsAboutUser)
+             .then(() =>{
+                  this.$state.go('account.timeline')
+             })
+         }
     }
     export class AccountPhotoController{
         public message = 'hello from the AccountPhotoController controler';
     }
     export class AccountCheckinController{
         public message = 'hello from the AccountCheckinController controler';
+
+    }
+    export class EditworkandeducationController{
+        public message = 'hello from the EditworkandeducationController controler';
+        public work;
+        public education;
+        constructor(
+            private accountService: ccalummiwebsite.Services.AccountService,
+            private $state:ng.ui.IStateService,
+
+         ){
+         }
+         editWork(){
+             console.log('!!!!!!!!!!!!!editWork' + this.work);
+             this.accountService.editWorkOnService(this.work)
+             .then(() =>{
+                 alert('Add work successfully')
+             })
+             .catch((err) =>{
+                 alert('Say something befor save');
+             })
+
+         }
+         editEdication(){
+             console.log('!!!!!!!!!!!!!editEdication' + this.education);
+             this.accountService.editEducationOnService(this.education)
+             .then(() =>{
+                 alert('Add education successfully')
+             })
+             .catch((err) =>{
+                 alert('Say something befor save');
+             })
+
+         }
+
+    }
+    export class FriendsController{
+        public message = 'hello from the EditworkandeducationController controler';
+        public userAccount;
+
+        constructor(
+            private accountService: ccalummiwebsite.Services.AccountService,
+         ){
+             this.getUserAccount();
+         }
+         getUserAccount(){
+             this.userAccount = this.accountService.getAccountOnService();
+         }
 
     }
 }
