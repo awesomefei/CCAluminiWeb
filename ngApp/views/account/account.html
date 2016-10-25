@@ -1,12 +1,13 @@
 <div class="col-md-12 home-top">
     <div class="hovereffect">
-         <a href="#"><img class="img-responsive pb" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTtyJLuYzBzB8x74E2WX8xsZhcbt3tavq8IZd6Yc0l00bcKY1S9"
-             ng-src="{{controller.file.url | fpConvert:{w: 400} }}" alt="{{controller.file.filename}}"/></a>
+         <a href="#"><img class="img-responsive pb" ng-src="{{vm.userAccount.profileImageUrl}}"/></a>
 
-        <!-- <a href="#"><img class="img-responsive pb" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTtyJLuYzBzB8x74E2WX8xsZhcbt3tavq8IZd6Yc0l00bcKY1S9" alt=""/></a> -->
         <div class="overlay">
             <a href="#" style="text-decoration:none;" ng-click='vm.pickFile()'><h2>Change Profile Picture</h2></a>
         </div>
+
+    </div>
+
 
     </div>
 </div>
@@ -17,7 +18,7 @@
             <ul class="nav nav-tabs" style="font-size:20px;">
                 <li class="active"><a ui-sref="account.timeline">Timeline</a></li>
                 <li><a ui-sref="account.about">About</a></li>
-                <li><a ui-sref="account.about">Friends(how many frinds)</a></li>
+                <li><a ui-sref="account.friends">Friends(how many frinds)</a></li>
                 <li><a ui-sref="account.photo">Photos</a></li>
                 <li><a ui-sref="account.checkin">Checkin</a></li>
             </ul>

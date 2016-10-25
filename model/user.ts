@@ -79,6 +79,7 @@ let userSchema = new mongoose.Schema({
     profileImageUrl:{
         type:String,
         required:false,
+        default:"http://whatsappdp.net/wp-content/uploads/2016/03/Best-whatsapp-profile-picture.jpg",
     },
     workingExperience:{
         type:String,

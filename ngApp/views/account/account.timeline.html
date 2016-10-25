@@ -6,17 +6,28 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <h3><i class="fa fa-globe" aria-hidden="true" ></i>&nbspIntro</h3>
-                <a href="#"><p><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                <p>
+                    {{vm.userAccount.detailsAboutUser}}
+                </p>
+                <!-- <a href="#"><p><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     Describe who you are
-                </p></a>
+                </p></a> -->
                 <hr style=" border: 1px solid #cccccc;">
 
                 <p>
-                    <i class="fa fa-home" aria-hidden="true"></i>&nbsp Lives in&nbsp
-                    <a href="#">{{vm.currentCity}}</a>
-                </p><p>
-                    <i class="fa fa-university" aria-hidden="true">&nbsp Studied at<a href="#">{{vm.education}}</a></i>
+                    <i class="fa fa-home" aria-hidden="true"></i> Lives in
+                    <a href="#">{{vm.userAccount.currentCity}}</a>
                 </p>
+                <p>
+                    <i class="fa fa-university" aria-hidden="true"></i> Studied at <a href="https://www.facebook.com/CoderCamps/">{{vm.userAccount.education}}</a>
+                </p>
+                <p>
+                    <i class="fa fa-suitcase" aria-hidden="true"></i> Worked for <a href="#">{{vm.userAccount.workingExperience}}</a>
+                </p>
+                <p>
+                    <i class="fa fa-futbol-o" aria-hidden="true"></i> Hobby <a href="#">{{vm.userAccount.hobby}}</a>
+                </p>
+
             </div>
         </div>
     </div>

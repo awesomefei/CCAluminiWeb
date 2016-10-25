@@ -1,7 +1,7 @@
 /*account image animation*/
 .hovereffect {
-  width: 269.44px;
-  height: 100%;
+  width: 269px;
+  height: 269px;
   float: left;
   overflow: hidden;
   position: relative;
@@ -16,14 +16,11 @@
   overflow: hidden;
   top: 0;
   left: 0;
-  background-color: rgba(75,75,75,0.7);
+  /*background-color: rgba(75,75,75,0.7);*/
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
-/*.hovereffect:hover .overlay {
-  background-color: rgba(48, 152, 157, 0.4);
-}*/
 
 .hovereffect img {
   display: block;
@@ -61,8 +58,8 @@
     border-left: 1px solid grey !important;
 }
 .pb {
-    width: 269.44px;
-    height: 100%;
+    width: 269px !important;
+    height:269px !important;
     padding-left: 0 !important;
     max-width: 50vh !important;
     max-height: 50vh !important;
