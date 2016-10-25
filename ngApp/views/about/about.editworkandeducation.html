@@ -1,0 +1,27 @@
+<h5 style="color:grey; text-align:left;">WORK</h5>
+<br  style="border:1px red solid">
+
+<div class="panel-body">
+
+    <form ng-submit='vm.editWork()'>
+        <div class="form-group">
+            <label>Company</label>
+            <input  type='text'class="form-control"ng-model='vm.work' placeholder="Where have you worked"></input>
+        </div>
+        <div style="text-align:right;">
+            <input type="submit" class='btn btn-primary saveChanges' value="Save Changes"></button>
+            <button type="button" class='btn btn-default'>Cancel</button>
+        </div>
+    </form>
+    <form ng-submit='vm.editEdication()'>
+        <div class="form-group">
+            <label>University</label>
+            <input  type='text'class="form-control"ng-model='vm.education' placeholder="Where have you studied"></input>
+        </div>
+        <div style="text-align:right;">
+            <input type="submit" class='btn btn-primary saveChanges' value="Save Changes"></button>
+            <button type="button" class='btn btn-default'>Cancel</button>
+        </div>
+
+    </form>
+ </div>

@@ -7,7 +7,7 @@ namespace ccalummiwebsite {
         $locationProvider: ng.ILocationProvider,
         $httpProvider: ng.IHttpProvider
     ) => {
-        filepickerProvider.setKey('AKajIDUelSihS59ufHbW1z'); 
+        filepickerProvider.setKey('AKajIDUelSihS59ufHbW1z');
         // Define routes
         $stateProvider
             .state('account', {
@@ -21,6 +21,13 @@ namespace ccalummiwebsite {
                 // url: '/account/about',
                 templateUrl: '/ngApp/views/account/account.timeline.html',
                 controller: ccalummiwebsite.Controllers.AccountController,
+                controllerAs: 'vm',
+
+            })
+            .state('account.friends', {
+                // url: '/account/about',
+                templateUrl: '/ngApp/views/account/account.friends.html',
+                controller: ccalummiwebsite.Controllers.FriendsController,
                 controllerAs: 'vm',
 
             })
@@ -48,6 +55,14 @@ namespace ccalummiwebsite {
                 controllerAs: 'vm',
 
             })
+            .state('account.about.editworkandeducation', {
+                templateUrl: '/ngApp/views/about/about.editworkandeducation.html',
+                controller: ccalummiwebsite.Controllers.EditworkandeducationController,
+                controllerAs: 'vm',
+
+            })
+
+
             .state('home', {
                 url: '/',
                 templateUrl: '/ngApp/views/home.html',

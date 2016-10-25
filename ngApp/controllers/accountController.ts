@@ -1,6 +1,6 @@
 namespace ccalummiwebsite.Controllers{
     export class AccountController{
-        public imgUrl = "http://whatsappdp.net/wp-content/uploads/2016/03/Best-whatsapp-profile-picture.jpg";
+        public imgUrl;
         public message = 'hello from AccountController';
         public userAccount;
         private id;
@@ -12,8 +12,8 @@ namespace ccalummiwebsite.Controllers{
             private $state:ng.ui.IStateService,
             private accountService: ccalummiwebsite.Services.AccountService,
          ){
+             this.getUserAccount();
              this.$state.go('account.timeline')
-        //     this.gerUserAccount();
          }
          public pickFile() {
 
@@ -28,30 +28,103 @@ namespace ccalummiwebsite.Controllers{
            this.imgUrl = file.url;
            this.accountService.updateimgUrlOnService(this.imgUrl)
            .then(() =>{
-             this.$scope.$apply()
+            this.getUserAccount();
            })
-
-        //    console.log(this.imgUrl);
-           // force page to update
        }
 
-
-        // gerUserAccount(){
-        //     this.userAccount = this.accountService.getAccountOnService({id:this.id});
-        // }
+        getUserAccount(){
+            this.userAccount = this.accountService.getAccountOnService();
+        }
     }
     export class AccountAboutController{
         public message = 'Hello from the account about page!';
+        public userAccount;
+
+        constructor(
+            private accountService: ccalummiwebsite.Services.AccountService,
+         ){
+             this.getUserAccount();
+         }
+         getUserAccount(){
+             this.userAccount = this.accountService.getAccountOnService();
+         }
 
     }
     export class AccountAboutDetailEditController{
         public message = 'Hello from the detailEdit controller';
+        public userAccount;
+        public detailsAboutUser;
+
+        constructor(
+            private accountService: ccalummiwebsite.Services.AccountService,
+            private $state:ng.ui.IStateService,
+
+         ){
+             this.getUserAccount();
+         }
+         getUserAccount(){
+             this.userAccount = this.accountService.getAccountOnService();
+         }
+         editDetailsAboutUser(){
+             this.accountService.editDetailsAboutUserOnService(this.detailsAboutUser)
+             .then(() =>{
+                  this.$state.go('account.timeline')
+             })
+         }
     }
     export class AccountPhotoController{
         public message = 'hello from the AccountPhotoController controler';
     }
     export class AccountCheckinController{
         public message = 'hello from the AccountCheckinController controler';
+
+    }
+    export class EditworkandeducationController{
+        public message = 'hello from the EditworkandeducationController controler';
+        public work;
+        public education;
+        constructor(
+            private accountService: ccalummiwebsite.Services.AccountService,
+            private $state:ng.ui.IStateService,
+
+         ){
+         }
+         editWork(){
+             console.log('!!!!!!!!!!!!!editWork' + this.work);
+             this.accountService.editWorkOnService(this.work)
+             .then(() =>{
+                 alert('Add work successfully')
+             })
+             .catch((err) =>{
+                 alert('Say something befor save');
+             })
+
+         }
+         editEdication(){
+             console.log('!!!!!!!!!!!!!editEdication' + this.education);
+             this.accountService.editEducationOnService(this.education)
+             .then(() =>{
+                 alert('Add education successfully')
+             })
+             .catch((err) =>{
+                 alert('Say something befor save');
+             })
+
+         }
+
+    }
+    export class FriendsController{
+        public message = 'hello from the EditworkandeducationController controler';
+        public userAccount;
+
+        constructor(
+            private accountService: ccalummiwebsite.Services.AccountService,
+         ){
+             this.getUserAccount();
+         }
+         getUserAccount(){
+             this.userAccount = this.accountService.getAccountOnService();
+         }
 
     }
 }

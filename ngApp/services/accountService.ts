@@ -9,17 +9,48 @@ namespace ccalummiwebsite.Services{
                 changeImgUrl:{
                     method:'PUT',
                     url:'/api/users/image'
+                },
+                getAccountInfo:{
+                    method:'GET',
+                    url:'/api/users/account'
+
+                },
+                editDetailsAboutUser:{
+                    method:"PUT",
+                    url:'/api/users/detail'
+                },
+                editWork:{
+                    method:'PUT',
+                    url:'/api/users/work'
+                },
+                editEducation:{
+                    method:'PUT',
+                    url:'/api/users/education'
                 }
+
             });
         }
-        getAccountOnService(id){
-
+        getAccountOnService(){
+            return this.accountResource.getAccountInfo();
         }
         updateimgUrlOnService(imageUrl){
-            console.log('$$$$$$$$$$$$updateimgUrlOnService');
             return this.accountResource.changeImgUrl({profileImageUrl:imageUrl}).$promise;
 
         }
+        editDetailsAboutUserOnService(detailsAboutUser){
+            return this.accountResource.editDetailsAboutUser({detailsAboutUser:detailsAboutUser}).$promise;
+        }
+
+        editWorkOnService(workingExperience){
+            return this.accountResource.editWork({workingExperience: workingExperience}).$promise;
+
+        }
+        editEducationOnService(education){
+            console.log('!!!!!!!!!!!!!editEdicationOnService' + education);
+            return this.accountResource.editEducation({education: education}).$promise;
+
+        }
+
     }
     angular.module('ccalummiwebsite').service('accountService', AccountService);
 }

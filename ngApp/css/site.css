@@ -1,7 +1,7 @@
 /*account image animation*/
 .hovereffect {
-  width: 269.44px;
-  height: 100%;
+  width: 269px;
+  height: 269px;
   float: left;
   overflow: hidden;
   position: relative;
@@ -58,8 +58,8 @@
     border-left: 1px solid grey !important;
 }
 .pb {
-    width: 269.44px !important;
-    height: 100% !important;
+    width: 269px !important;
+    height:269px !important;
     padding-left: 0 !important;
     max-width: 50vh !important;
     max-height: 50vh !important;
