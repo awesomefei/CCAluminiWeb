@@ -6,7 +6,34 @@ import User from '../model/user';
 import * as mongodb from 'mongodb';
 
 let userRouter = express.Router();
-let ObjectId = mongodb.ObjectID;
+
+//READ users
+userRouter.get('/', (req,res)=>{
+    User.find().then((users)=>{
+        res.send(users)
+    }).catch(()=>{
+        res.status(500);
+    })
+});
+
+userRouter.get('/user', authorize, (req,res)=>{
+    User.findOne({username: req.user.username})
+    .then((user)=>{
+        res.send(user);
+    }).catch(()=>{
+        res.status(500);
+        console.log("User not found");
+    })
+})
+
+//delete users
+userRouter.delete('/:id', (req,res)=>{
+    User.findByIdAndRemove(req.params['id']).then((user)=>{
+        res.sendStatus(200);
+    }).catch(()=>{
+        res.sendStatus(400);
+    })
+})
 
 //LOGIN AND REGISTRATION
 let LocalStrategy = passportLocal.Strategy;

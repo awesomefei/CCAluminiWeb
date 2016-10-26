@@ -17,6 +17,7 @@ import routes from './routes/index';
 import users from './routes/users';
 import userRouter from './routes/userRoute';
 import messageRouter from './routes/messageRoute';
+import activityRouter from './routes/activityRoute';
 
 let app = express();
 let server = require('http').createServer(app);
@@ -50,8 +51,9 @@ app.use('/api', express.static(path.join(__dirname, 'api')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/api/users', userRouter)
-app.use('/api/messages', messageRouter)
+app.use('/api/users', userRouter);
+app.use('/api/messages', messageRouter);
+app.use('/api/activities', activityRouter);
 
 
 // redirect 404 to home for the sake of AngularJS client-side routes
