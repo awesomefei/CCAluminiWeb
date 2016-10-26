@@ -1,13 +1,14 @@
 import * as mongoose from 'mongoose';
-import User from './user';
-import * as Message from './message'
+import * as User from './user';
+import Activity from './activity';
 
 export interface IActivity extends mongoose.Document {
     userId: string,
     message: string,
     timeCreate: Date,
-    likes: number,
-    messages: Message.IMessage[];
+    likeCount: number,
+    activities: IActivity[];
+    likes: User.IUser[];
 }
 
 let activitySchema = new mongoose.Schema ({
@@ -23,13 +24,17 @@ let activitySchema = new mongoose.Schema ({
         type: Date,
         required: true
     },
-    likes: {
+    likeCount: {
         type: Number,
         required: true
     },
-    messages: [{
+    activities: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Message'
+    }],
+    likes: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }]
 });
 

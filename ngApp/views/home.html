@@ -58,7 +58,7 @@
                     <div class="col-md-12 panel-footer">
                         <div class="row">
                             <div class="col-sm-2">
-                                <i class="fa fa-thumbs-up" aria-hidden="true"></i> Like
+                                <i class="fa fa-thumbs-up" aria-hidden="true" ng-click="vm.addLike(a._id)"></i> {{a.likeCount}} Likes
                             </div>
                             <div class="col-sm-2">
                                 <i class="fa fa-comment" aria-hidden="true"></i> Comment
@@ -75,13 +75,20 @@
                             <div class="col-sm-1">
                                 <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" width="50px" alt="" />
                             </div>
-                            <div class="col-sm-10" id="comment">
-                                <input type="text" class="form-control input-sm">
-                            </div>
-                            <div class="col-sm-1" id="comment">
-                                <button type="button" class="btn btn-sm btn-primary">Reply</button>
-                            </div>
+                            <form ng-submit="vm.saveMessage(vm.userSend._id)">
+                                <div class="">
+                                    <div class="col-sm-10" id="comment">
+                                        <input type="text" class="form-control input-sm">
+                                    </div>
+                                    <div class="col-sm-1" id="comment">
+                                        <button type="submit" class="btn btn-sm btn-primary">Reply</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
+                    </div>
+                    <div class="col-md-12">
+
                     </div>
                 </div>
         <div class="col-md-3">

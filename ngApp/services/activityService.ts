@@ -3,7 +3,12 @@ namespace ccalummiwebsite.Services {
         public activityResources;
 
         constructor(private $resource: ng.resource.IResourceService){
-            this.activityResources = $resource('api/activities')
+            this.activityResources = $resource('api/activities', null, {
+                addLike: {
+                    method: "PUT",
+                    url: "/api/activities/:id"
+                }
+            })
         }
 
         getActivities(){
@@ -12,6 +17,10 @@ namespace ccalummiwebsite.Services {
 
         saveActivity(message){
             return this.activityResources.save(message).$promise
+        }
+
+        addLike(id){
+            return this.activityResources.addLike({id: id}).$promise
         }
     }
     angular.module('ccalummiwebsite').service('activityService', ActivityService);
