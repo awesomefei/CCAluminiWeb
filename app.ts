@@ -26,15 +26,6 @@ let connections = [];
 
 Database.connect();
 
-io.sockets.on('connection', function(socket){
-    connections.push(socket);
-    console.log("Connected: %s sockets connected", connections.length);
-
-    //disconnect
-    connections.splice(connections.indexOf(socket), 1);
-    console.log('disconnect:  %s sockets connected', connections.length);
-});
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -17,9 +17,9 @@ namespace ccalummiwebsite {
                 controllerAs: 'vm'
             })
             $stateProvider
-                .state('test', {
-                    url: '/test',
-                    templateUrl: '/ngApp/views/test.html',
+                .state('chat', {
+                    url: '/chat',
+                    templateUrl: '/ngApp/views/chat.html',
                     controller: ccalummiwebsite.Controllers.AccountCheckinController,
                     controllerAs: 'vm'
                 })

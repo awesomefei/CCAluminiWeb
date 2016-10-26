@@ -1,3 +1,10 @@
+/*chat room*/
+
+#messageArea{
+    display: none;
+}
+
+
 /*account image animation*/
 .hovereffect {
   width: 269px;
