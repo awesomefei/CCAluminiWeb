@@ -6,6 +6,7 @@ import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 import * as ejs from 'ejs';
 import * as passport from 'passport';
+import * as socket from 'socket.io';
 const bearerToken = require('express-bearer-token');
 const expressValidator = require('express-validator');
 
@@ -18,7 +19,21 @@ import userRouter from './routes/userRoute';
 import messageRouter from './routes/messageRoute';
 
 let app = express();
+let server = require('http').createServer(app);
+let io = require('socket.io').listen(server);
+let user = [];
+let connections = [];
+
 Database.connect();
+
+io.sockets.on('connection', function(socket){
+    connections.push(socket);
+    console.log("Connected: %s sockets connected", connections.length);
+
+    //disconnect
+    connections.splice(connections.indexOf(socket), 1);
+    console.log('disconnect:  %s sockets connected', connections.length);
+});
 
 
 // view engine setup

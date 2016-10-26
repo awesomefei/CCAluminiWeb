@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/c219aebcb3.js"></script>
     <script type="text/javascript" ssrc="//api.filepicker.io/v2/filepicker.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 
 </head>
 
@@ -35,6 +36,7 @@
                         <li class="active" ng-show="!vm.getUsername()"><a href="/login">Register <span class="sr-only">(current)</span></a></li>
                         <li><a href="/account" ng-show="vm.getUsername()">Account</a></li>
                         <li><a href="/inbox" ng-show="vm.getUsername()">Inbox</a></li>
+                        <li><a href="/test" ng-show="vm.getUsername()">Test</a></li>
                         </ul>
                     <div ng-controller="navbarController as vm" ng-show="!vm.getUsername()">
                         <form class="navbar-form navbar-right" role="search" ng-submit="vm.login()" id="loginForm">
