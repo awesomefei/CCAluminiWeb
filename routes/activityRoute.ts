@@ -1,16 +1,21 @@
+import * as mongoose from 'mongoose';
 import * as express from 'express';
 import * as jwt from 'jsonwebtoken';
 import Activity from '../model/activity';
 import User from '../model/user';
 import Message from '../model/message';
+import Comment from '../model/comments';
 import * as mongodb from 'mongodb';
+import mongooseDeepPopulate from 'mongoose-deep-populate';
+
+let deepPopulate = mongooseDeepPopulate(connection)
 
 let activityRouter = express.Router();
 let ObjectId = mongodb.ObjectID;
 
 //populate all activities and bring it to view
 activityRouter.get('/',(req,res)=>{
-    Activity.find().sort('timeCreate').populate('userId')
+    Activity.find().sort('timeCreate').populate('userId comments')
     .then((activities)=>{
         res.send(activities);
     }).catch((err)=>{
@@ -20,7 +25,7 @@ activityRouter.get('/',(req,res)=>{
 
 //get one activity
 activityRouter.get('/:id', (req,res)=>{
-    Activity.findById(req.params['id'])
+    Activity.findById(req.params['id']).populate('userId comments userSend')
     .then((activity)=>{
         res.send(activity);
     }).catch((err)=>{
@@ -47,25 +52,46 @@ activityRouter.post('/', authorize, (req,res)=>{
     })
 });
 
+// Activity.update({_id: req.params['id']}, {$push: {activities: activity._id}})
 
+//Make a comment on the activity
+activityRouter.post('/saveComment/:id', authorize, (req,res)=>{
+    let comment = new Comment();
+
+    comment.userSend = req.user.id;
+    comment.message = req.body.message;
+    comment.timeCreate = new Date();
+
+    comment.save()
+    .then((comment)=>{
+        Activity.update({_id: req.params['id']}, {$push: {comments: comment._id}})
+        .then((activity)=>{
+            res.send(activity)
+            console.log('comment made')
+        }).catch((err)=>{
+            res.send(err)
+        })
+    }).catch((err)=>{
+        res.status(400).send(err)
+    })
+});
 
 activityRouter.put('/:id', authorize, (req,res)=>{
-    Activity.findById(req.params['id'])
+    Activity.findOne({_id: req.params['id']})
     .then((activity)=>{
-        Activity.find({likes: req.user.id})
-        .then((activity)=>{
-            Activity.update( {_id: req.params['id']}, {$push: {likes: req.user.id}})
+        if(activity.likes.indexOf(req.user.id)==-1){
+            Activity.update({_id: req.params['id']}, {$push: {likes: req.user.id}})
             .then((activity)=>{
-                console.log('here')
-                activity.likes++;
+                console.log(activity)
+                res.send(activity)
             }).catch(()=>{
-                console.log('Updating like count has failed')
+                console.log('Something went wrong')
             })
-        }).catch(()=>{
-            console.log('Adding user to like array has failed')
-        })
+        } else {
+            console.log('Search failed')
+        }
     }).catch(()=>{
-        console.log('User has already liked')
+        console.log('Activity not found')
     })
 })
 

@@ -189,3 +189,13 @@ position:absolute;;
 #comment {
     padding-top: 10px;
 }
+
+/*COMMENT*/
+
+.commentMessage {
+    margin-top: 10px;
+}
+
+.activityComment {
+    margin-bottom: 20px;
+}

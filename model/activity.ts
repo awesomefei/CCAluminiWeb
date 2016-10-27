@@ -1,13 +1,14 @@
 import * as mongoose from 'mongoose';
 import * as User from './user';
-import Activity from './activity';
+import * as Activity from './activity';
+import * as Comment from './comments'
 
 export interface IActivity extends mongoose.Document {
     userId: string,
     message: string,
     timeCreate: Date,
     likeCount: number,
-    activities: IActivity[];
+    comments: Comment.IComment[]
     likes: User.IUser[];
 }
 
@@ -28,9 +29,9 @@ let activitySchema = new mongoose.Schema ({
         type: Number,
         required: true
     },
-    activities: [{
+    comments: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Message'
+        ref: 'Comment'
     }],
     likes: [{
         type: mongoose.Schema.Types.ObjectId,
