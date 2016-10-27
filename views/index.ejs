@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/c219aebcb3.js"></script>
     <script type="text/javascript" ssrc="//api.filepicker.io/v2/filepicker.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 
 </head>
 
@@ -35,6 +36,7 @@
                         <li class="active" ng-show="!vm.getUsername()"><a href="/login">Register <span class="sr-only">(current)</span></a></li>
                         <li><a href="/account" ng-show="vm.getUsername()">Account</a></li>
                         <li><a href="/inbox" ng-show="vm.getUsername()">Inbox</a></li>
+                        <li><a href="/chat">Chat Room</a></li>
                         </ul>
                     <div ng-controller="navbarController as vm" ng-show="!vm.getUsername()">
                         <form class="navbar-form navbar-right" role="search" ng-submit="vm.login()" id="loginForm">
@@ -77,6 +79,9 @@
   <div class="footer" style="text-align:center">
       <h2>footer :</h2>
   </div>
+  <script src='http://code.jquery.com/jquery-latest.min.js'></script>
+  <script src="/socket.io/socket.io.js"></script>
+
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
 
@@ -107,8 +112,10 @@
   <script src="/ngApp/services/userService.js" charset="utf-8"></script>
   <script src="ngApp/services/activityService.js" charset="utf-8"></script>
 
-  <!-- <script src="/bower_components/typed.js" type="text/javascript"></script> -->
+  <script>
+   var socket = io.connect('http://localhost:3000');
 
+  </script>
 
   <!-- <script>
       $(function () {

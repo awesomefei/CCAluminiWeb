@@ -13,10 +13,16 @@ namespace ccalummiwebsite {
             .state('account', {
                 url: '/account',
                 templateUrl: '/ngApp/views/account/account.html',
-                // templateUrl: '/ngApp/views/account/account.html',
                 controller: ccalummiwebsite.Controllers.AccountController,
                 controllerAs: 'vm'
             })
+            $stateProvider
+                .state('chat', {
+                    url: '/chat',
+                    templateUrl: '/ngApp/views/chat.html',
+                    controller: ccalummiwebsite.Controllers.AccountCheckinController,
+                    controllerAs: 'vm'
+                })
             .state('account.timeline', {
                 // url: '/account/about',
                 templateUrl: '/ngApp/views/account/account.timeline.html',

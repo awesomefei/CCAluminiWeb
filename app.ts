@@ -6,6 +6,7 @@ import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 import * as ejs from 'ejs';
 import * as passport from 'passport';
+import * as socket from 'socket.io';
 const bearerToken = require('express-bearer-token');
 const expressValidator = require('express-validator');
 
@@ -19,6 +20,11 @@ import messageRouter from './routes/messageRoute';
 import activityRouter from './routes/activityRoute';
 
 let app = express();
+let server = require('http').createServer(app);
+let io = require('socket.io').listen(server);
+let user = [];
+let connections = [];
+
 Database.connect();
 
 
