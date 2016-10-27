@@ -23,10 +23,24 @@ namespace ccalummiwebsite {
                     controller: ccalummiwebsite.Controllers.AccountCheckinController,
                     controllerAs: 'vm'
                 })
+                $stateProvider
+                    .state('doublechat', {
+                        url: '/doublechat',
+                        templateUrl: '/ngApp/views/doubleChat.html',
+                        controller: ccalummiwebsite.Controllers.AccountCheckinController,
+                        controllerAs: 'vm'
+                    })
             .state('account.timeline', {
                 // url: '/account/about',
                 templateUrl: '/ngApp/views/account/account.timeline.html',
                 controller: ccalummiwebsite.Controllers.AccountController,
+                controllerAs: 'vm',
+
+            })
+            .state('account.frineds', {
+                // url: '/account/about',
+                templateUrl: '/ngApp/views/account/account.friends.html',
+                controller: ccalummiwebsite.Controllers.FriendsController,
                 controllerAs: 'vm',
 
             })

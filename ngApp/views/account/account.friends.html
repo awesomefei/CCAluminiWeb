@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="row friendsImg" >
+        <div class="col-sm-6 col-md-4" ng-repeat='friend in vm.users'>
+                <a href="#" class="thumbnail"><img class='thumbImg'ng-src="{{friend.profileImageUrl}}" alt="friendsImg"/></a>
+                <div class="caption" style="text-align:center;">
+                    <h3><a href="#">{{friend.firstname}} {{friend.lastname}}</a></h3>
+                </div>
+        </div>
+    </div>
+</div>
