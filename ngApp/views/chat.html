@@ -71,6 +71,13 @@
         socket.on('leave', function(data){
             $chat.append('<div class = "well"><strong>'+data.username+'</strong>'+' left'+'<div class="date">'+new Date()+'</div>'+'</div>')
         })
+        // socket.emit('join',$username.val(), function(data){
+        //     socket.on('join', function(data){
+        //         console.log("Connected: %s sockets connected" + data.username);
+        //         $chat.append('<div class = "well"><strong>'+data.username+'</strong>'+' joined'+'<div class="date">'+new Date()+'</div>'+'</div>')
+        //     });
+        //
+        // });
 
         $userForm.submit(function(e){
             e.preventDefault();
@@ -78,6 +85,9 @@
                 if(data){
                     $userFormArea.hide();
                     $messageArea.show();
+                    socket.on('join', function(data){
+                        $chat.append('<div class = "well"><strong>'+data.username+'</strong>'+' joined'+'<div class="date">'+new Date()+'</div>'+'</div>')
+                    });
                 }else{
                     $nameError.html('That username is already taken! Try again')
                 }

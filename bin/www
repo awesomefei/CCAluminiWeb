@@ -22,15 +22,22 @@ app.set('port', port);
 var server = http.createServer(app);
 var io = require('socket.io')(server);
 
+var server
+
 connections = [];
 users=[];
 
 io.sockets.on('connection', function(socket){
     connections.push(socket);
     console.log("Connected: %s sockets connected", connections.length);
+    console.log("Connected: %s sockets connected", socket.username);
+
+
 
     //disconnect
     socket.on('disconnect', function(data){
+        console.log("Connected: %s sockets connected", socket.username);
+
         io.sockets.emit('leave', {username:socket.username});
         users.splice(users.indexOf(socket.username), 1);
 
@@ -51,6 +58,7 @@ io.sockets.on('connection', function(socket){
             socket.username = data;
             users.push(socket.username);
             updateUsernames();
+            io.sockets.emit('join', {username:socket.username});
         }
 
     });
