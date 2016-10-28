@@ -15,6 +15,7 @@ userRouter.get('/', (req,res)=>{
         res.status(500);
     })
 });
+//READ u
 
 userRouter.get('/user', authorize, (req,res)=>{
     User.findOne({username: req.user.username})

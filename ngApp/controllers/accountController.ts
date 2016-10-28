@@ -77,6 +77,9 @@ namespace ccalummiwebsite.Controllers{
     }
     export class AccountCheckinController{
         public message = 'hello from the AccountCheckinController controler';
+        public date = new Date();
+        constructor(){
+        }
 
     }
     export class EditworkandeducationController{
@@ -90,7 +93,6 @@ namespace ccalummiwebsite.Controllers{
          ){
          }
          editWork(){
-             console.log('!!!!!!!!!!!!!editWork' + this.work);
              this.accountService.editWorkOnService(this.work)
              .then(() =>{
                  alert('Add work successfully')
@@ -101,7 +103,6 @@ namespace ccalummiwebsite.Controllers{
 
          }
          editEdication(){
-             console.log('!!!!!!!!!!!!!editEdication' + this.education);
              this.accountService.editEducationOnService(this.education)
              .then(() =>{
                  alert('Add education successfully')
@@ -114,16 +115,16 @@ namespace ccalummiwebsite.Controllers{
 
     }
     export class FriendsController{
-        public message = 'hello from the EditworkandeducationController controler';
-        public userAccount;
+        public message = 'hello from the FriendsController controler';
+        public users;
 
         constructor(
-            private accountService: ccalummiwebsite.Services.AccountService,
+            private userService: ccalummiwebsite.Services.UserService,
          ){
-             this.getUserAccount();
+             this.getUsers();
          }
-         getUserAccount(){
-             this.userAccount = this.accountService.getAccountOnService();
+         getUsers(){
+            this.users = this.userService.getUsersOnService();
          }
 
     }
