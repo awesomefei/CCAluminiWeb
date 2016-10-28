@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <img ng-src="{{vm.activity.userId.profileImageUrl}}" width="75px"alt="" />
+            <strong>{{vm.activity.userId.firstname}} {{vm.activity.userId.lastname}}</strong>
+    <br>
+    <div class="commentMessage">
+        <p class="modal-title">{{vm.activity.message}}</p>
+    </div>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-1">
+            <img src="{{vm.user.profileImageUrl}}" width="35px"alt="" />
+        </div>
+        <div class="col-md-11">
+            <input type="text" class="form-control" ng-model="vm.comment.message">
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger btn-sm" ng-click="vm.cancelComment()">Cancel</button>
+    <button type="button" class="btn btn-primary btn-sm" ng-click="vm.saveComment()">Comment</button>
+</div>

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-2" >
             <div class="col-sm-3">
-                <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" width="30px" alt=""/>
+                <img src="{{vm.user.profileImageUrl}}" width="30px" alt=""/>
             </div>
             <div class="col-sm-9">
                 <h5>{{vm.user.firstname}} {{vm.user.lastname}}</h5>
@@ -38,7 +38,7 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-sm-1 activityPic">
-                                <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" width="50px" alt=""/>
+                                <img src="{{a.userId.profileImageUrl}}" width="50px" alt=""/>
                             </div>
                             <div class="col-sm-11" >
                                 <h5 style="text-align: left"><strong>{{a.userId.firstname}} {{a.userId.lastname}}</strong></h5>
@@ -55,13 +55,13 @@
                         </p>
                     </div>
                     <hr>
-                    <div class="col-md-12 panel-footer">
+                    <div class="col-md-12 panel-footer activityComment">
                         <div class="row">
                             <div class="col-sm-2">
-                                <i class="fa fa-thumbs-up" aria-hidden="true" ng-click="vm.addLike(a._id)"></i> {{a.likeCount}} Likes
+                                <i class="fa fa-thumbs-up" aria-hidden="true" ng-click="vm.addLike(a._id)"></i> {{a.likes.length}} Likes
                             </div>
                             <div class="col-sm-2">
-                                <i class="fa fa-comment" aria-hidden="true"></i> Comment
+                                <i class="fa fa-comment" aria-hidden="true" ng-click="vm.getActivityDetail(a._id)"></i> Comment
                             </div>
                             <div class="col-sm-3">
 
@@ -70,26 +70,12 @@
                     </div>
                     <hr>
                     <br>
-                    <div class="col-md-12" >
-                        <div class="row">
-                            <div class="col-sm-1">
-                                <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" width="50px" alt="" />
-                            </div>
-                            <form ng-submit="vm.saveMessage(vm.userSend._id)">
-                                <div class="">
-                                    <div class="col-sm-10" id="comment">
-                                        <input type="text" class="form-control input-sm">
-                                    </div>
-                                    <div class="col-sm-1" id="comment">
-                                        <button type="submit" class="btn btn-sm btn-primary">Reply</button>
-                                    </div>
-                                </div>
-                            </form>
+                        <div class="col-md-12" ng-repeat="c in a.comments">
+                            {{c.message}}
+                            {{c.userSend.firstname}}
+                            <hr>
                         </div>
-                    </div>
-                    <div class="col-md-12">
 
-                    </div>
                 </div>
         <div class="col-md-3">
 
