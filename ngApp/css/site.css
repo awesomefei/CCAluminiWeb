@@ -1,9 +1,16 @@
+.thumbImg{
+    height: 300px !important;
+    width: 300px !important;
+}
+
 /*chat room*/
 
 #messageArea{
     display: none;
 }
-
+.date{
+    text-align: right;
+}
 
 /*account image animation*/
 .hovereffect {

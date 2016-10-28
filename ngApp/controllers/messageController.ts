@@ -64,7 +64,7 @@ namespace ccalummiwebsite.Controllers {
         }
 
         getUsers(){
-            this.users = this.userService.getUsers()
+            this.users = this.userService.getUsersOnService()
         }
 
         saveMessage(){
