@@ -4,6 +4,7 @@ import * as jwt from 'jsonwebtoken'
 import User from '../model/user';
 import Message from '../model/message';
 import Activity from '../model/activity';
+import Comment from
 
 let messageRouter = express.Router();
 let ObjectId = mongodb.ObjectID;
@@ -56,6 +57,11 @@ messageRouter.post('/:recieverId', authorize, (req,res)=>{
         res.status(400).send(err)
     })
 });
+
+//Reply to a message
+// messageRouter.post('/', authorize, (req,res)=>{
+//     let
+// })
 
 //reply to message
 function authorize(req, res, next){

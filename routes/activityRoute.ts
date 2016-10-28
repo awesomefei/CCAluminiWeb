@@ -8,7 +8,7 @@ import Comment from '../model/comments';
 import * as mongodb from 'mongodb';
 import mongooseDeepPopulate from 'mongoose-deep-populate';
 
-let deepPopulate = mongooseDeepPopulate(connection)
+
 
 let activityRouter = express.Router();
 let ObjectId = mongodb.ObjectID;
