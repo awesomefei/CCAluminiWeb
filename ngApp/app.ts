@@ -16,19 +16,35 @@ namespace ccalummiwebsite {
                 controller: ccalummiwebsite.Controllers.AccountController,
                 controllerAs: 'vm'
             })
-            $stateProvider
-                .state('chat', {
-                    url: '/chat',
-                    templateUrl: '/ngApp/views/chat.html',
+            .state('forum', {
+                url: '/forum',
+                templateUrl: '/ngApp/views/forum/forum.html',
+                controller: ccalummiwebsite.Controllers.ForumController,
+                controllerAs: 'vm'
+            })
+            .state('ask', {
+                url: '/ask',
+                templateUrl: '/ngApp/views/forum/ask.html',
+                controller: ccalummiwebsite.Controllers.AskController,
+                controllerAs: 'vm'
+            })
+            .state('taggedQuestion',{
+                url: '/taggedQuestion',
+                templateUrl: '/ngApp/views/forum/taggedQuestion.html',
+                controller: ccalummiwebsite.Controllers.TaggedQuestionController,
+                controllerAs: 'vm'
+            })
+            .state('chat', {
+                url: '/chat',
+                templateUrl: '/ngApp/views/chat.html',
+                controller: ccalummiwebsite.Controllers.AccountCheckinController,
+                controllerAs: 'vm'
+                })
+                .state('doublechat', {
+                    url: '/doublechat',
+                    templateUrl: '/ngApp/views/doubleChat.html',
                     controller: ccalummiwebsite.Controllers.AccountCheckinController,
                     controllerAs: 'vm'
-                })
-                $stateProvider
-                    .state('doublechat', {
-                        url: '/doublechat',
-                        templateUrl: '/ngApp/views/doubleChat.html',
-                        controller: ccalummiwebsite.Controllers.AccountCheckinController,
-                        controllerAs: 'vm'
                     })
             .state('account.timeline', {
                 // url: '/account/about',

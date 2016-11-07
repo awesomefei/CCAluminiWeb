@@ -1,3 +1,11 @@
+
+hr.style18 {
+  border:1px lightgrey solid;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+
 .thumbImg{
     height: 300px !important;
     width: 300px !important;

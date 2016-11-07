@@ -37,6 +37,7 @@
                         <li><a href="/inbox" ng-show="vm.getUsername()">Inbox</a></li>
                         <li><a href="/chat">Chat Room</a></li>
                         <li><a href="/doublechat" ng-show="vm.getUsername()">Double Chat</a></li>
+                        <li><a href="/forum" ng-show="vm.getUsername()">Forum</a></li>
 
                         </ul>
                     <div ng-controller="navbarController as vm" ng-show="!vm.getUsername()">
@@ -65,7 +66,7 @@
                     <div ng-controller="navbarController as vm" ng-show="vm.getUsername()" >
                         <ul class="nav navbar-nav navbar-right" id="accountLogout">
                             <button type="button" name="Acount" class="btn btn-primary btn-md" ng-click="vm.gotoAccount()">
-                                <i class="fa fa-user" aria-hidden="true"></i>.  {{vm.firstname}}
+                                <i class="fa fa-user" aria-hidden="true"></i>. Welcome {{vm.firstname}}
                             </button>
                             <button type="button" name="logout" class="btn btn-primary btn-md" ng-click="vm.logout()">Logout</button>
                         </ul>
@@ -105,6 +106,8 @@
   <script src="/ngApp/controllers/messageController.js" charset="utf-8"></script>
   <script src="/ngApp/controllers/activityController.js" charset="utf-8"></script>
   <script src="/ngApp/controllers/commentController.js" charset="utf-8"></script>
+  <script src="/ngApp/controllers/forumController.js" charset="utf-8"></script>
+
   <!-- services -->
   <script src="/ngApp/services/loginService.js"></script>
   <script src="/ngApp/services/services.js"></script>
@@ -112,6 +115,7 @@
   <script src="/ngApp/services/messageService.js" charset="utf-8"></script>
   <script src="/ngApp/services/userService.js" charset="utf-8"></script>
   <script src="ngApp/services/activityService.js" charset="utf-8"></script>
+  <script src="ngApp/services/forumService.js" charset="utf-8"></script>
 
   </script>
 

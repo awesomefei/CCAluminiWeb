@@ -11,18 +11,36 @@
    </style>
 
 
-<div class="container">
-</div>
+<!-- <div class="container">
+</div> -->
 
-<ul id="messages"></ul>
+<!-- <ul id="messages"></ul> -->
+<!-- <ul>
+
+        {{vm.userAccount.firstname}} syas: <div id="messages"></div>
+
+</ul>
    <form action="">
      <input id="m" autocomplete="on" /><button>Send</button>
    </form>
-<br>
+<br> -->
 
+<div class="container">
+    {{vm.message}}
+    <ul ng-repeat='msg in vm.messages'>
 
-<script type="text/javascript">
-        var socket = io.connect('http://localhost:8080');
+            {{vm.userAccount.firstname}} syas: {{msg}}
+
+    </ul>
+       <form ng-submit="vm.snedMes(msg)">
+         <input id="m" autocomplete="on"  ng-model='vm.msg'/>
+         <input type="submit" value="send"></input>
+       </form>
+    <br>
+</div>
+
+<!-- <script type="text/javascript">
+        var socket = io.connect('http://localhost:3000');
         var $messages = $('#messages');
         // socket.broadcast.to(username).emit('chat message', $('#m').val());
         $('form').submit(function(e){
@@ -35,4 +53,4 @@
             $messages.append('<li>' + msg.msg + '</li>');
         });
 
-</script>
+</script> -->

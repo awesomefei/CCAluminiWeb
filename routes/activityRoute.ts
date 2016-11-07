@@ -6,9 +6,9 @@ import User from '../model/user';
 import Message from '../model/message';
 import Comment from '../model/comments';
 import * as mongodb from 'mongodb';
-import mongooseDeepPopulate from 'mongoose-deep-populate';
-
-let deepPopulate = mongooseDeepPopulate(connection)
+// import mongooseDeepPopulate from 'mongoose-deep-populate';
+//
+// let deepPopulate = mongooseDeepPopulate(connection)
 
 let activityRouter = express.Router();
 let ObjectId = mongodb.ObjectID;
@@ -30,7 +30,6 @@ activityRouter.get('/:id', (req,res)=>{
         res.send(activity);
     }).catch((err)=>{
         res.send(err);
-        console.log('activity post not found')
     })
 })
 
@@ -46,7 +45,6 @@ activityRouter.post('/', authorize, (req,res)=>{
     activity.save()
     .then((activity)=>{
         res.send(activity);
-        console.log("Post Saved")
     }).catch((err)=>{
         res.status(400).send(err)
     })
