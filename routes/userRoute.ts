@@ -15,29 +15,15 @@ userRouter.get('/', (req,res)=>{
         res.status(500);
     })
 });
-//READ user
+//READ u
 
-
-//Get user that is logged on
 userRouter.get('/user', authorize, (req,res)=>{
     User.findOne({username: req.user.username})
-    .populate('friendsList')
-    .populate('pics')
     .then((user)=>{
         res.send(user);
     }).catch(()=>{
         res.status(500);
         console.log("User not found");
-    })
-})
-
-//read a user
-userRouter.get('/:id', (req,res)=>{
-    User.findById(req.params['id'])
-    .then((user)=>{
-        res.send(user);
-    }).catch((err)=>{
-        res.status(err)
     })
 })
 
@@ -124,12 +110,14 @@ userRouter.put('/work', authorize,(req, res) =>{
     User.findOneAndUpdate(
         {username:req.user.username},
         {workingExperience:req.body.workingExperience})
+        .populate('friendsList')
+        .populate('pics')
         .then((user) =>{
             res.status(200).send(user);
         })
         .catch((err) =>{
             console.log(err);
-            res.send(err)
+            res.sendStatus(404)
         })
 })
 

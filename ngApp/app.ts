@@ -57,17 +57,7 @@ namespace ccalummiwebsite {
                     templateUrl: '/ngApp/views/doubleChat.html',
                     controller: ccalummiwebsite.Controllers.AccountCheckinController,
                     controllerAs: 'vm'
-<<<<<<< HEAD
                 })
-                $stateProvider
-                    .state('doublechat', {
-                        url: '/doublechat',
-                        templateUrl: '/ngApp/views/doubleChat.html',
-                        controller: ccalummiwebsite.Controllers.AccountCheckinController,
-                        controllerAs: 'vm'
-=======
->>>>>>> ProfileInfo
-                    })
             .state('account.timeline', {
                 // url: '/account/about',
                 templateUrl: '/ngApp/views/account/account.timeline.html',
