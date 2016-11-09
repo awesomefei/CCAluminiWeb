@@ -12,7 +12,7 @@ namespace ccalummiwebsite.Services{
                 },
                 getAccountInfo:{
                     method:'GET',
-                    url:'/api/users/account'
+                    url:'/api/users/user'
 
                 },
                 editDetailsAboutUser:{

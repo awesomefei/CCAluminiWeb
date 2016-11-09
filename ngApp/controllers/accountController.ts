@@ -13,7 +13,8 @@ namespace ccalummiwebsite.Controllers{
             private accountService: ccalummiwebsite.Services.AccountService,
          ){
              this.getUserAccount();
-             this.$state.go('account.timeline')
+             this.$state.go('account.timeline');
+             console.log(this.userAccount); 
          }
          public pickFile() {
 
