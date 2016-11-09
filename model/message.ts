@@ -1,13 +1,13 @@
 import * as mongoose from 'mongoose';
 import * as User from './user';
-import Message from './message'
+import * as Comment from './comments';
 
 export interface IMessage extends mongoose.Document {
     userSend: string,
     userRecieve: string,
     title: string,
     message: string,
-    messages: IMessage[];
+    comments: Comment.IComment[];
     timeCreate: Date
 }
 
@@ -28,9 +28,9 @@ let messageSchema = new mongoose.Schema ({
         type: String,
         required: true
     },
-    messages: [{
+    comments: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Message'
+        ref: 'Comment'
     }],
     timeCreate: {
         type: Date,

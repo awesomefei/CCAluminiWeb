@@ -29,6 +29,7 @@ namespace ccalummiwebsite.Controllers {
     export class MessageDetailsController {
         public message;
         private messId;
+        public comment;
 
         constructor(private messageService: ccalummiwebsite.Services.MessageService,
                     private $stateParams:ng.ui.IStateParamsService){
@@ -39,6 +40,16 @@ namespace ccalummiwebsite.Controllers {
         getMessage(messId){
             this.message = this.messageService.getMessage(messId);
             console.log(messId);
+        }
+
+        saveComment(messId){
+            this.comment = this.messageService.saveComment(messId, this.comment)
+            .then(()=>{
+                console.log('Comment was saved');
+                this.getMessage(messId)
+            }).catch(()=>{
+                console.log('Comment was not succesfuly saved')
+            })
         }
     }
 

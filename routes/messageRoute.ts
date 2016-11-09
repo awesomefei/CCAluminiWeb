@@ -4,7 +4,8 @@ import * as jwt from 'jsonwebtoken'
 import User from '../model/user';
 import Message from '../model/message';
 import Activity from '../model/activity';
-import Comment from
+import Comment from '../model/comments';
+import Notification from '../model/notification';
 
 let messageRouter = express.Router();
 let ObjectId = mongodb.ObjectID;
@@ -29,7 +30,7 @@ messageRouter.get('/', (req,res)=>{
 })
 
 messageRouter.get('/:id', (req,res)=>{
-    Message.findById(req.params['id']).populate('userSend userRecieve')
+    Message.findById(req.params['id']).populate('userSend userRecieve comments')
     .then((message)=>{
         res.send(message)
     }).catch((err)=>{
@@ -59,9 +60,25 @@ messageRouter.post('/:recieverId', authorize, (req,res)=>{
 });
 
 //Reply to a message
-// messageRouter.post('/', authorize, (req,res)=>{
-//     let
-// })
+messageRouter.post('/saveComment/:id', authorize, (req,res)=>{
+    let comment = new Comment();
+
+    comment.userSend = req.user.id;
+    comment.message = req.body.message;
+    comment.timeCreate = new Date();
+
+    comment.save()
+    .then((comment)=>{
+        Message.update({_id: req.params['id']}, {$push: {comments: comment._id}})
+        .then((message)=>{
+            res.send(message)
+        }).catch((err)=>{
+            res.send(err)
+        })
+    }).catch((err)=>{
+        res.status(400).send(err)
+    })
+})
 
 //reply to message
 function authorize(req, res, next){

@@ -22,11 +22,28 @@
             -{{vm.message.userSend.firstname}}
         </p>
         <hr>
-        <div class="form-group">
-            <textarea class='form-control' rows="8" cols="40"></textarea>
-        </div>
-        <div class="form-group">
-            <button type="button" class="btn btn-primary btn-sm" name="button">Reply</button>
-        </div>
+        <form ng-submit="vm.saveComment(vm.message._id)">
+            <div class="col-md-12" ng-repeat="c in vm.message.comments">
+                <p>
+                    <strong>From: </strong>
+                </p>
+                <p>
+                    <strong>Send:</strong>
+                </p>
+                <p>
+                {{c.message}}
+                </p>
+                <p>
+                    -{{c.userSend.firstnam}}
+                </p>
+                <hr>
+            </div>
+            <div class="form-group">
+                <textarea class='form-control' rows="8" cols="40" ng-model='vm.comment.message'></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-sm" name="button">Reply</button>
+            </div>
+        </form>
     </div>
 </div>
