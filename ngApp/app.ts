@@ -119,8 +119,6 @@ namespace ccalummiwebsite {
                 controllerAs: 'vm',
 
             })
-
-
             .state('home', {
                 url: '/',
                 templateUrl: '/ngApp/views/home.html',
@@ -144,6 +142,12 @@ namespace ccalummiwebsite {
                 url: '/message/:id',
                 templateUrl: '/ngApp/views/messageDetails.html',
                 controller: ccalummiwebsite.Controllers.MessageDetailsController,
+                controllerAs: 'vm'
+            })
+            .state('user', {
+                url: '/user/:id',
+                templateUrl: '/ngApp/views/user/user.html',
+                controller: ccalummiwebsite.Controllers.UserController,
                 controllerAs: 'vm'
             })
             .state('notFound', {

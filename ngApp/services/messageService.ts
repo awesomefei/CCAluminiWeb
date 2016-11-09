@@ -7,6 +7,10 @@ namespace ccalummiwebsite.Services {
                 saveMessage: {
                     method: "POST",
                     url: "/api/messages/:recieverId"
+                },
+                saveComment: {
+                    method: 'POST',
+                    url: '/api/messages/saveComment/:id'
                 }
             })
         }
@@ -22,6 +26,11 @@ namespace ccalummiwebsite.Services {
         saveMessage(id, message){
             return this.messageResource.saveMessage({recieverId: id}, message).$promise
         }
+
+        saveComment(id, comment){
+            return this.messageResource.saveComment({id: id}, comment).$promise
+        }
+
     }
     angular.module('ccalummiwebsite').service('messageService', MessageService);
 }

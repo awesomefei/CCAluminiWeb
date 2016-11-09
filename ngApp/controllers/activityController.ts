@@ -9,7 +9,8 @@ namespace ccalummiwebsite.Controllers {
         constructor(private activityService: ccalummiwebsite.Services.ActivityService,
                     private userService: ccalummiwebsite.Services.UserService,
                     private messageService: ccalummiwebsite.Services.MessageService,
-                    private $uibModal: ng.ui.bootstrap.IModalService){
+                    private $uibModal: ng.ui.bootstrap.IModalService,
+                    private $state:ng.ui.IStateService){
             this.getActivities();
         }
 
@@ -26,6 +27,8 @@ namespace ccalummiwebsite.Controllers {
                     activityId: ()=>id,
                 },
                 size: "md"
+            }).result.then(()=>{
+                this.getActivities();
             })
         }
 
@@ -54,6 +57,10 @@ namespace ccalummiwebsite.Controllers {
             }).catch(()=>{
                 console.log('Liking post was unsuccesfull')
             })
+        }
+
+        getaUser(userId){
+            this.$state.go('user', {id:userId});
         }
     }
 }

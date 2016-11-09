@@ -15,12 +15,10 @@ userRouter.get('/', (req,res)=>{
         res.status(500);
     })
 });
-<<<<<<< HEAD
-//READ u
-=======
 //READ user
->>>>>>> ProfileInfo
 
+
+//Get user that is logged on
 userRouter.get('/user', authorize, (req,res)=>{
     User.findOne({username: req.user.username})
     .populate('friendsList')
@@ -30,6 +28,16 @@ userRouter.get('/user', authorize, (req,res)=>{
     }).catch(()=>{
         res.status(500);
         console.log("User not found");
+    })
+})
+
+//read a user
+userRouter.get('/:id', (req,res)=>{
+    User.findById(req.params['id'])
+    .then((user)=>{
+        res.send(user);
+    }).catch((err)=>{
+        res.status(err)
     })
 })
 

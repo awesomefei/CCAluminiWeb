@@ -41,7 +41,7 @@
                                 <img src="{{a.userId.profileImageUrl}}" width="50px" alt=""/>
                             </div>
                             <div class="col-sm-11" >
-                                <h5 style="text-align: left"><strong>{{a.userId.firstname}} {{a.userId.lastname}}</strong></h5>
+                                <h5 style="text-align: left" ng-click="vm.getaUser(a.userId._id)"><strong>{{a.userId.firstname}} {{a.userId.lastname}}</strong></h5>
                                 <p style="text-align: left">
                                     {{a.timeCreate | timeAgo}}
                                 </p>
@@ -81,4 +81,3 @@
 
         </div>
     </div>
-</div>

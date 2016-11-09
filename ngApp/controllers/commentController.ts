@@ -10,7 +10,7 @@ namespace ccalummiwebsite.Controllers {
                     public activityId,
                     private $state:ng.ui.IStateService){
                         this.getActivity();
-                        this.getUser();
+                        // this.getUser();
         }
 
         getActivity(){
@@ -26,7 +26,7 @@ namespace ccalummiwebsite.Controllers {
             .then(()=>{
                 this.$uibModalInstance.close();
                 this.getActivities();
-                this.$state.go('home'); 
+                this.$state.go('home');
             }).catch(()=>{
                 console.log('Posting a comment was unsuccesfull')
             })

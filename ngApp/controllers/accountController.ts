@@ -155,6 +155,7 @@ namespace ccalummiwebsite.Controllers{
     export class FriendsController{
         public message = 'hello from the FriendsController controler';
         public users;
+        public user;
 
         constructor(
             private userService: ccalummiwebsite.Services.UserService,
@@ -164,6 +165,5 @@ namespace ccalummiwebsite.Controllers{
          getUsers(){
             this.users = this.userService.getUsersOnService();
          }
-
     }
 }
