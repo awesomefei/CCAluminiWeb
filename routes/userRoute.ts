@@ -15,10 +15,16 @@ userRouter.get('/', (req,res)=>{
         res.status(500);
     })
 });
+<<<<<<< HEAD
 //READ u
+=======
+//READ user
+>>>>>>> ProfileInfo
 
 userRouter.get('/user', authorize, (req,res)=>{
     User.findOne({username: req.user.username})
+    .populate('friendsList')
+    .populate('pics')
     .then((user)=>{
         res.send(user);
     }).catch(()=>{
@@ -110,14 +116,12 @@ userRouter.put('/work', authorize,(req, res) =>{
     User.findOneAndUpdate(
         {username:req.user.username},
         {workingExperience:req.body.workingExperience})
-        .populate('friendsList')
-        .populate('pics')
         .then((user) =>{
             res.status(200).send(user);
         })
         .catch((err) =>{
             console.log(err);
-            res.sendStatus(404)
+            res.send(err)
         })
 })
 

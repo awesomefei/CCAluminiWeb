@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <h3>{{vm.question.title}}</h3>
+            <hr>
+            <div class="row">
+                <div class="col-sm-1" style="">
+                    <a href="#" ><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+                    <p >&nbsp&nbsp{{vm.question.voteCount}}</p>
+                    <a href="#"><span class="glyphicon glyphicon-star-empty" aria-hidden="true" ng-show='!vm.isFavorite()' ng-click=''></span></a>
+                    <a href="#"><span class="glyphicon glyphicon-star" aria-hidden="true" ng-show='vm.isFavorite()'ng-click=''></span></a>
+
+                </div>
+                <div class="col-sm-11">
+                    <p>
+                        {{vm.question.text}}
+                    </p>
+                        <a href="/taggedQuestion/{{tag._id}}" style="text-decoration:none" ng-repeat='tag in vm.question.tags'><span class="label label-info"
+                             style="margin-right:5px"> {{tag.item}} </span></a>
+                </div>
+            </div>
+             <hr>
+             <h3>{{vm.question.answers.length}} Answer:</h3>
+             <hr>
+             <div class="row">
+                 <div class="col-sm-1">
+                     <a href="#" ><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+                     <p>&nbsp&nbsp{{vm.question.voteCount}}</p>
+                 </div>
+                 <div class="col-sm-11"  ng-repeat='answer in vm.question.answers' style="font-family: 'Raleway', sans-serif; font-size:20px">
+                     <p style="font-size:20px;">
+                         {{answer.text}}
+                     </p>
+                     <br>
+                     <p style="text-align:right">
+                        answered at {{answer.timeCreate}}
+                     </p>
+                     <a href="#" style="text-decoration:none">add a comment</a>
+                      <hr style="border: 1px solid black;">
+                 </div>
+             </div>
+
+             <hr>
+             <h3>Your Answer</h3>
+             <form ng-submit='vm.saveAnswer()'>
+                 <textarea placeholder="Leave your answer here..."
+                 rows="8" cols="102" ng-model='vm.answer.text'></textarea>
+                 <br><br>
+                 <imput type="submit" class="btn btn-primary" ng-click='vm.saveAnswer()'>Post Your Answer</button>
+             </form>
+            </div>
+    </div>
+</div>

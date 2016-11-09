@@ -1,6 +1,16 @@
 <div class="container">
+<<<<<<< HEAD
     <div class="row friendsImg" >
         <div class="col-sm-6 col-md-4" ng-repeat='friend in vm.users'>
+=======
+    <h2>Search frind</h2>
+    <div class="">
+        <input type="text" placeholder="search for a food..."
+            ng-model='firstname' class="form-control menue"></input>
+    </div>
+    <div class="row friendsImg" >
+        <div class="col-sm-6 col-md-4" ng-repeat='friend in vm.users | filter:{firstname:firstname}'>
+>>>>>>> ProfileInfo
                 <a href="#" class="thumbnail"><img class='thumbImg'ng-src="{{friend.profileImageUrl}}" alt="friendsImg"/></a>
                 <div class="caption" style="text-align:center;">
                     <h3><a href="#">{{friend.firstname}} {{friend.lastname}}</a></h3>
