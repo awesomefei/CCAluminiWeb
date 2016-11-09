@@ -76,11 +76,48 @@ namespace ccalummiwebsite.Controllers{
     export class AccountPhotoController{
         public message = 'hello from the AccountPhotoController controler';
     }
+
+
+    // angular.module('ccalummiwebsite').factory('socket', function(){
+    //     var io=require('./bin/www');
+    //     var socket = io.connect('http://localhost:3000');
+    //
+    // })
     export class AccountCheckinController{
         public message = 'hello from the AccountCheckinController controler';
         public date = new Date();
+<<<<<<< HEAD
         constructor(){
         }
+=======
+        public userAccount;
+        public messages = [];
+        public msg;
+        // private io=require('./bin/www');
+        // private socket = this.io.connect('http://localhost:3000');
+
+        constructor(
+            private accountService: ccalummiwebsite.Services.AccountService,
+            private $state:ng.ui.IStateService,
+            private  $scope,
+
+         ){
+             this.getUserAccount();
+         }
+         getUserAccount(){
+             this.userAccount = this.accountService.getAccountOnService();
+         }
+        //  sendMes(){
+        //      this.socket.emit('send msg', this.msg.text);
+        //      this.msg.text = '';
+        //  }
+        //  getMes(data){
+        //      this.socket.on('get msg',)
+        //      this.messages.push(data);
+        //      this.$scope.$digest();
+         //
+        //  }
+>>>>>>> ProfileInfo
 
     }
     export class EditworkandeducationController{
@@ -99,6 +136,7 @@ namespace ccalummiwebsite.Controllers{
                  alert('Add work successfully')
              })
              .catch((err) =>{
+                 console.log('Say something befor save' + err);
                  alert('Say something befor save');
              })
 

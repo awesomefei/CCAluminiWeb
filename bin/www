@@ -22,7 +22,10 @@ app.set('port', port);
 var server = http.createServer(app);
 var io = require('socket.io')(server);
 
+<<<<<<< HEAD
 var server
+=======
+>>>>>>> ProfileInfo
 
 connections = [];
 users=[];
@@ -36,7 +39,12 @@ io.sockets.on('connection', function(socket){
 
     //disconnect
     socket.on('disconnect', function(data){
+<<<<<<< HEAD
         console.log("Connected: %s sockets connected", socket.username);
+=======
+        console.log(socket.length);
+        // console.log("Connected: %s sockets connected", socket.username);
+>>>>>>> ProfileInfo
 
         io.sockets.emit('leave', {username:socket.username});
         users.splice(users.indexOf(socket.username), 1);
@@ -65,6 +73,16 @@ io.sockets.on('connection', function(socket){
     function updateUsernames(){
         io.sockets.emit('get users', users);
     }
+    socket.on('send msg', function(data){
+        socket.on('send msg',function(data){
+            io.sockets.emit('get msg', data);
+        });
+    })
+
+    // socket.on('chat message', function(data){
+    //     io.sockets.emit('new message', {msg:data, username:socket.username});
+    // });
+
 
     socket.on('chat message', function(data){
         io.sockets.emit('new message', {msg:data, username:socket.username});

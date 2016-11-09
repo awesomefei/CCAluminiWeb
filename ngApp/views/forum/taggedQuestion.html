@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8" style="padding-right:10px">
+            <div class="row" ng-repeat="question in vm.tag.questions | orderBy:'-timeCreate'">
+                <div class="col-lg-1" style="padding-top:10px; text-align:center;">
+                    <p>{{question.voteCount}}</p>
+                    <p style="">Vote</p>
+                </div>
+                <div class="col-lg-1" style=" padding-top:10px; text-align:center;">
+                    <p>{{question.answers.length}}</p>
+                    <p style="">Answer</p>
+                </div>
+                <div class="col-lg-10" style="">
+                    <h4><a href="/answer/{{question._id}}">{{question.title}}</a></h4>
+                    <div style="clear: both;">
+                        <p>
+                            <div class="">
+                                <a href="/taggedQuestion/{{tag}}" ng-repeat='tag in question.tags'  style="text-decoration:none">
+                                    <span class="label label-info"  style="margin-right:5px" >
+                                        {{vm.tagItem}} </span>{{question}}</a>
+                            </div>
+                            <span style="float:right;">asked by {{question.user}} at {{question.timeCreate}}</span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" style="padding-left:10px;">
+
+        </div>
+        <!--  >
+
+
+                    <hr clhre='style18'>
+            </div>
+        </div>
+     -->
+    </div>
+</div>

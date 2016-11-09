@@ -52,5 +52,6 @@ namespace ccalummiwebsite.Services{
         }
 
     }
+
     angular.module('ccalummiwebsite').service('accountService', AccountService);
 }
