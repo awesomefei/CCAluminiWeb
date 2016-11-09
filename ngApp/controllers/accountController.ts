@@ -77,19 +77,19 @@ namespace ccalummiwebsite.Controllers{
     }
 
 
-    angular.module('ccalummiwebsite').factory('socket', function(){
-        var io=require('./bin/www');
-        var socket = io.connect('http://localhost:3000');
-
-    })
+    // angular.module('ccalummiwebsite').factory('socket', function(){
+    //     var io=require('./bin/www');
+    //     var socket = io.connect('http://localhost:3000');
+    //
+    // })
     export class AccountCheckinController{
         public message = 'hello from the AccountCheckinController controler';
         public date = new Date();
         public userAccount;
         public messages = [];
         public msg;
-        private io=require('./bin/www');
-        private socket = this.io.connect('http://localhost:3000');
+        // private io=require('./bin/www');
+        // private socket = this.io.connect('http://localhost:3000');
 
         constructor(
             private accountService: ccalummiwebsite.Services.AccountService,
@@ -102,16 +102,16 @@ namespace ccalummiwebsite.Controllers{
          getUserAccount(){
              this.userAccount = this.accountService.getAccountOnService();
          }
-         sendMes(){
-             this.socket.emit('send msg', this.msg.text);
-             this.msg.text = '';
-         }
-         getMes(data){
-             this.socket.on('get msg',)
-             this.messages.push(data);
-             this.$scope.$digest();
-
-         }
+        //  sendMes(){
+        //      this.socket.emit('send msg', this.msg.text);
+        //      this.msg.text = '';
+        //  }
+        //  getMes(data){
+        //      this.socket.on('get msg',)
+        //      this.messages.push(data);
+        //      this.$scope.$digest();
+         //
+        //  }
 
     }
     export class EditworkandeducationController{

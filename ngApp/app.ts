@@ -22,6 +22,18 @@ namespace ccalummiwebsite {
                 controller: ccalummiwebsite.Controllers.ForumController,
                 controllerAs: 'vm'
             })
+            .state('question',{
+                url: '/question/:id',
+                templateUrl: '/ngApp/views/forum/question.html',
+                controller: ccalummiwebsite.Controllers.ForumController,
+                controllerAs: 'vm'
+            })
+            .state('answer',{
+                url: '/answer/:id',
+                templateUrl: '/ngApp/views/forum/answer.html',
+                controller: ccalummiwebsite.Controllers.AnswerController,
+                controllerAs: 'vm'
+            })
             .state('ask', {
                 url: '/ask',
                 templateUrl: '/ngApp/views/forum/ask.html',
@@ -29,7 +41,7 @@ namespace ccalummiwebsite {
                 controllerAs: 'vm'
             })
             .state('taggedQuestion',{
-                url: '/taggedQuestion',
+                url: '/taggedQuestion/:id',
                 templateUrl: '/ngApp/views/forum/taggedQuestion.html',
                 controller: ccalummiwebsite.Controllers.TaggedQuestionController,
                 controllerAs: 'vm'

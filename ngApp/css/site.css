@@ -1,4 +1,15 @@
-
+.glyphicon-chevron-up{
+    font-size: 25px;
+    text-align:center;
+}
+.glyphicon-star-empty{
+    font-size: 25px;
+    text-align:center;
+}
+.glyphicon-star{
+    font-size: 25px;
+    text-align:center;
+}
 hr.style18 {
   border:1px lightgrey solid;
   margin-left: 10px;

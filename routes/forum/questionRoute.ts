@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as mongodb from 'mongodb';
-import Question from '../../model/question';
 import Answer from '../../model/answer';
+import Question from '../../model/question';
 import User from '../../model/user';
 
 let questionRouter = express.Router();
@@ -9,7 +9,7 @@ let ObjectId = mongodb.ObjectID;
 
 questionRouter.get('/', (req, res) =>{
     Question.find()
-    .populate('users tags')
+    .populate(' users tags')
     .then((questions)=>{
         res.send(questions);
     }).catch(()=>{
@@ -18,21 +18,19 @@ questionRouter.get('/', (req, res) =>{
 });
 
 questionRouter.get('/:id', (req,res)=>{
-    console.log('!!!!!!!req ' + req.params['id']);
 
     Question.findById(req.params['id'])
-    .populate(' users tags')
+    .populate('answers users tags')
 
     .then((question)=>{
-        console.log('!!!!!!!question ' + question);
         res.send(question);
     }).catch((err) =>{
-        console.log('!!!!!!!err ' + err);
         res.send(err);
     })
 });
 questionRouter.put('/', (req, res) =>{
     Question.findByIdAndUpdate(req.body._id, req.body)
+    .populate('users tags')
     .then((question) =>{
         res.status(201).send(question);
     })
@@ -56,6 +54,27 @@ questionRouter.post('/', (req, res) =>{
         res.send(err);
     })
 });
+questionRouter.post('/addAnswer/:questionId', (req, res)=>{
+    let questionId= new ObjectId(req.params['questionId']);
+    let answer = new Answer();
+    answer.text = req.body.text;
+    answer.timeCreate = new Date();
+    answer.save()
+    .then((answer) =>{
+        let answerId = new ObjectId(answer._id);
+        Question.update({_id:questionId}, {$push:{answers:answerId}})
+        .then(() =>{
+                res.sendStatus(201);
+            })
+            .catch(() =>{
+                res.sendStatus(404);
+            });
+        })
+        .catch(() =>{
+            res.sendStatus(400);
+        });
+});
+
 questionRouter.post('/addTag/:questionId', (req, res) =>{
     let questionId= new ObjectId(req.params['questionId']);
     let tagId = new ObjectId(req.body.tagId);

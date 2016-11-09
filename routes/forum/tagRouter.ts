@@ -17,10 +17,14 @@ tagRouter.get('/', (req, res) =>{
     });
 });
 tagRouter.get('/:id', (req,res) =>{
+    console.log('!!!!!!!!!!!!!!!!!'+req.params.id);
+    // var id = new ObjectId(req.params.id)
     Tag.findById(req.params['id'])
-    .populate('Question')
+    // Tag.findById(id)
+
+    .populate('questions')
     .then((tag) =>{
-        console.log('!!!!!!!!');
+        console.log(tag)
         res.send(tag);
     })
     .catch((err) =>{

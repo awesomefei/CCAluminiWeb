@@ -17,7 +17,7 @@
                         </div>
                         <div class="col-lg-1" style=" padding-top:10px; text-align:center;">
                             <a href="#" style="text-decoration:none"><p style="text-align=center;">
-                                {{question.answerCount}}
+                                {{question.answers.length}}
                             </p></a>
                             <a href="#" style="text-decoration:none"><p>
                                 answers
@@ -25,12 +25,12 @@
                         </div>
 
                         <div class="col-lg-10" style="">
-                            <h4><a href="#">{{question.title}}</a></h4>
+                            <h4><a href="/answer/{{question._id}}">{{question.title}}</a></h4>
                             <div style="clear: both;">
                                 <p>
                                     <div class="">
-                                        <a href="" style="text-decoration:none" ng-click='vm.getSelectedTagQuestions(tag.item)'><span class="label label-info"
-                                            ng-repeat='tag in question.tags' style="margin-right:5px"> {{tag.item}} </span></a>
+                                        <a href="/taggedQuestion/{{tag._id}}" style="text-decoration:none" ng-repeat='tag in question.tags'><span class="label label-info"
+                                             style="margin-right:5px"> {{tag.item}} </span></a>
 
                                     </div>
                                     <span style="float:right;">asked by {{question.user}} at {{question.timeCreate}}</span>

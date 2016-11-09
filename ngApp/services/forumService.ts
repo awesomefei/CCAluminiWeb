@@ -6,19 +6,22 @@ namespace ccalummiwebsite.Services {
             private $resource: ng.resource.IResourceService,
         ){
             this.forumResource=$resource('api/questions/:id', null, {
-                // saveQuestion:{
-                //     method:'PUT',
-                //     url:'/api/questions'
-                // },
+                saveAnswer:{
+                    method:'POST',
+                    url:'/api/questions/addAnswer/:questionId'
+                },
                 saveTag:{
                     method:'POST',
                     url:'/api/tags/addquestion/:tagId'
                 },
                 editQuestion:{
                     method:'PUT',
-                    url:'/api/questions'
+                    url:'/api/questions/'
                 }
             })
+        }
+        saveAnswerOnService(questionId, answer){
+            return this.forumResource.saveAnswer({questionId:questionId}, answer).$promise;
         }
         saveQuestionOnService(question){
             return this.forumResource.save(question).$promise;
@@ -30,7 +33,7 @@ namespace ccalummiwebsite.Services {
             return this.forumResource.editQuestion(question);
         }
         getQuestionOnService(id){
-            return this.forumResource.get({id:id}).$promise;
+            return this.forumResource.get({id:id});
         }
 
     }
@@ -41,8 +44,12 @@ namespace ccalummiwebsite.Services {
         ){
             this.tagResource=$resource('/api/tags/:id')
         }
+
         getTagsOnService(){
             return this.tagResource.query();
+        }
+        getTagOnService(tagId){
+            return this.tagResource.get({id:tagId}).$promise;
         }
     }
 
