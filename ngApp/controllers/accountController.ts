@@ -14,7 +14,7 @@ namespace ccalummiwebsite.Controllers{
          ){
              this.getUserAccount();
              this.$state.go('account.timeline');
-             console.log(this.userAccount); 
+             console.log(this.userAccount);
          }
          public pickFile() {
 
@@ -86,10 +86,6 @@ namespace ccalummiwebsite.Controllers{
     export class AccountCheckinController{
         public message = 'hello from the AccountCheckinController controler';
         public date = new Date();
-<<<<<<< HEAD
-        constructor(){
-        }
-=======
         public userAccount;
         public messages = [];
         public msg;
@@ -117,7 +113,6 @@ namespace ccalummiwebsite.Controllers{
         //      this.$scope.$digest();
          //
         //  }
->>>>>>> ProfileInfo
 
     }
     export class EditworkandeducationController{

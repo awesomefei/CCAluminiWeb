@@ -21,8 +21,6 @@ userRouter.get('/', (req,res)=>{
 //Get user that is logged on
 userRouter.get('/user', authorize, (req,res)=>{
     User.findOne({username: req.user.username})
-    .populate('friendsList')
-    .populate('pics')
     .then((user)=>{
         user.password=" "
         res.send(user);
@@ -37,6 +35,7 @@ userRouter.get('/:id', (req,res)=>{
     User.findById(req.params['id'])
     .then((user)=>{
         res.send(user);
+        console.log('You are here');
     }).catch((err)=>{
         res.status(err)
     })
