@@ -7,12 +7,10 @@ namespace ccalummiwebsite.Controllers {
                     private $stateParams:ng.ui.IStateParamsService,
                     private accountService: ccalummiwebsite.Services.AccountService){
                         let userId = this.$stateParams["id"];
-                        this.getaUser();
-                        console.log(this.userId);
-                        console.log("Hi from this controller");
+                        this.getaUser(userId);
         }
-        getaUser(){
-            this.user = this.userService.getaUser(this.userId);
+        getaUser(userId){
+            this.user = this.userService.getaUser(userId);
         }
     }
 }

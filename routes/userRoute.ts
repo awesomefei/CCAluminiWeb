@@ -20,10 +20,22 @@ userRouter.get('/', (req,res)=>{
 userRouter.get('/user', authorize, (req,res)=>{
     User.findOne({username: req.user.username})
     .then((user)=>{
+        user.password=" "
         res.send(user);
     }).catch(()=>{
         res.status(500);
         console.log("User not found");
+    })
+})
+
+//read a user
+userRouter.get('/:id', (req,res)=>{
+    User.findById(req.params['id'])
+    .then((user)=>{
+        res.send(user);
+        console.log('You are here');
+    }).catch((err)=>{
+        res.status(err)
     })
 })
 

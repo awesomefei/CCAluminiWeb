@@ -2,12 +2,7 @@ namespace ccalummiwebsite.Services {
     export class ActivityService {
         public activityResources;
 
-<<<<<<< HEAD
         constructor(private $resource: ng.resource.IResourceService){
-=======
-        constructor(
-            private $resource: ng.resource.IResourceService){
->>>>>>> ProfileInfo
             this.activityResources = $resource('api/activities/:id', null, {
                 addLike: {
                     method: "PUT",

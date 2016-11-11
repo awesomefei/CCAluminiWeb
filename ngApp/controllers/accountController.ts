@@ -13,7 +13,8 @@ namespace ccalummiwebsite.Controllers{
             private accountService: ccalummiwebsite.Services.AccountService,
          ){
              this.getUserAccount();
-             this.$state.go('account.timeline')
+             this.$state.go('account.timeline');
+             console.log(this.userAccount);
          }
          public pickFile() {
 
@@ -78,8 +79,33 @@ namespace ccalummiwebsite.Controllers{
     export class AccountCheckinController{
         public message = 'hello from the AccountCheckinController controler';
         public date = new Date();
-        constructor(){
-        }
+        public userAccount;
+        public messages = [];
+        public msg;
+        // private io=require('./bin/www');
+        // private socket = this.io.connect('http://localhost:3000');
+
+        constructor(
+            private accountService: ccalummiwebsite.Services.AccountService,
+            private $state:ng.ui.IStateService,
+            private  $scope,
+
+         ){
+             this.getUserAccount();
+         }
+         getUserAccount(){
+             this.userAccount = this.accountService.getAccountOnService();
+         }
+        //  sendMes(){
+        //      this.socket.emit('send msg', this.msg.text);
+        //      this.msg.text = '';
+        //  }
+        //  getMes(data){
+        //      this.socket.on('get msg',)
+        //      this.messages.push(data);
+        //      this.$scope.$digest();
+         //
+        //  }
 
     }
     export class EditworkandeducationController{

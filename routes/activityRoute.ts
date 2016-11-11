@@ -6,24 +6,29 @@ import User from '../model/user';
 import Message from '../model/message';
 import Comment from '../model/comments';
 import * as mongodb from 'mongodb';
-<<<<<<< HEAD
-import mongooseDeepPopulate from 'mongoose-deep-populate';
-
-
-=======
-// import mongooseDeepPopulate from 'mongoose-deep-populate';
-//
-// let deepPopulate = mongooseDeepPopulate(connection)
->>>>>>> ProfileInfo
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 let activityRouter = express.Router();
 let ObjectId = mongodb.ObjectID;
 
 //populate all activities and bring it to view
 activityRouter.get('/',(req,res)=>{
-    Activity.find().sort('timeCreate').populate('userId comments')
+    Activity.find().sort('timeCreate').populate([
+        {
+            path: 'userId',
+            model: 'User',
+        },
+        {
+            path: 'comments',
+            model: 'Comment',
+            populate: {
+                path: 'userSend',
+                model: 'User'
+            }
+        }
+    ])
     .then((activities)=>{
-        res.send(activities);
+        res.send(activities)
     }).catch((err)=>{
         res.send(err)
     })
@@ -57,7 +62,6 @@ activityRouter.post('/', authorize, (req,res)=>{
 });
 
 // Activity.update({_id: req.params['id']}, {$push: {activities: activity._id}})
-<<<<<<< HEAD
 
 //Make a comment on the activity
 activityRouter.post('/saveComment/:id', authorize, (req,res)=>{
@@ -67,17 +71,6 @@ activityRouter.post('/saveComment/:id', authorize, (req,res)=>{
     comment.message = req.body.message;
     comment.timeCreate = new Date();
 
-=======
-
-//Make a comment on the activity
-activityRouter.post('/saveComment/:id', authorize, (req,res)=>{
-    let comment = new Comment();
-
-    comment.userSend = req.user.id;
-    comment.message = req.body.message;
-    comment.timeCreate = new Date();
-
->>>>>>> ProfileInfo
     comment.save()
     .then((comment)=>{
         Activity.update({_id: req.params['id']}, {$push: {comments: comment._id}})

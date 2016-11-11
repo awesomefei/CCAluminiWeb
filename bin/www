@@ -22,7 +22,6 @@ app.set('port', port);
 var server = http.createServer(app);
 var io = require('socket.io')(server);
 
-
 connections = [];
 users=[];
 
@@ -36,6 +35,7 @@ io.sockets.on('connection', function(socket){
         console.log("Connected: %s sockets connected", socket.username);
         console.log(socket.length);
         // console.log("Connected: %s sockets connected", socket.username);
+
         io.sockets.emit('leave', {username:socket.username});
         users.splice(users.indexOf(socket.username), 1);
         updateUsernames();
