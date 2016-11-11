@@ -6,7 +6,6 @@ import User from '../model/user';
 import Message from '../model/message';
 import Comment from '../model/comments';
 import * as mongodb from 'mongodb';
-var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 let activityRouter = express.Router();
 let ObjectId = mongodb.ObjectID;

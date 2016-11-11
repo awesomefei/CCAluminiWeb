@@ -51,10 +51,8 @@ namespace ccalummiwebsite {
                     templateUrl: '/ngApp/views/doubleChat.html',
                     controller: ccalummiwebsite.Controllers.AccountCheckinController,
                     controllerAs: 'vm'
-<<<<<<< HEAD
                 })
-=======
-                    })
+
             .state('ask', {
                 url: '/ask',
                 templateUrl: '/ngApp/views/forum/ask.html',
@@ -77,7 +75,6 @@ namespace ccalummiwebsite {
                 controller: ccalummiwebsite.Controllers.AskController,
                 controllerAs: 'vm',
             })
->>>>>>> ProfileInfo
             .state('account.timeline', {
                 // url: '/account/about',
                 templateUrl: '/ngApp/views/account/account.timeline.html',
@@ -165,33 +162,32 @@ namespace ccalummiwebsite {
                 templateUrl: '/ngApp/views/notFound.html'
             });
 
-        // Handle request for non-existent route
-        $urlRouterProvider.otherwise('/notFound');
 
-        // Enable HTML5 navigation
-        $locationProvider.html5Mode(true);
+            // Handle request for non-existent route
+            $urlRouterProvider.otherwise('/notFound');
 
-        $httpProvider.interceptors.push("BearerAuthInterceptor")
-    });
-    angular.module('ccalummiwebsite').factory('BearerAuthInterceptor',
-   ($window:ng.IWindowService, $q:ng.IQService)=>{
-       return {
-           request: function(config){
-               config.headers = config.headers || {};
+            // Enable HTML5 navigation
+            $locationProvider.html5Mode(true);
 
-               if($window.localStorage.getItem('token')){
-                   config.headers.Authorization = 'Bearer ' + $window.localStorage.getItem('token');
+            $httpProvider.interceptors.push("BearerAuthInterceptor")
+        });
+        angular.module('ccalummiwebsite').factory('BearerAuthInterceptor',
+       ($window:ng.IWindowService, $q:ng.IQService)=>{
+           return {
+               request: function(config){
+                   config.headers = config.headers || {};
+
+                   if($window.localStorage.getItem('token')){
+                       config.headers.Authorization = 'Bearer ' + $window.localStorage.getItem('token');
+                   }
+                   return config || $q.when(config);
+               },
+               response: function(response){
+                   if(response.status === 401) {
+
+                   }
+                   return response || $q.when(response);
                }
-               return config || $q.when(config);
-           },
-           response: function(response){
-               if(response.status === 401) {
-
-               }
-               return response || $q.when(response);
            }
-       }
-   });
-
-
+       });
 }

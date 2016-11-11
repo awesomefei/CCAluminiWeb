@@ -3,7 +3,7 @@ namespace ccalummiwebsite.Services {
         public userResources;
 
         constructor(private $resource:ng.resource.IResourceService){
-            this.userResources = $resource('/api/users'), null, {
+            this.userResources = $resource('/api/users/:id'), null, {
                 getUser: {
                     method: "GET",
                     url: "/api/users/user"

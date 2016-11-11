@@ -3,7 +3,6 @@ import * as User from './user';
 import * as Activity from './activity';
 import * as Comment from './comments';
 
-var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 export interface IActivity extends mongoose.Document {
     userId: string,
@@ -41,15 +40,6 @@ let activitySchema = new mongoose.Schema ({
     }]
 });
 
-activitySchema.plugin(deepPopulate, {
-    populate: {
-        'comments.userSend' :{
-            select: 'firstname',
-            options: {
-                limit: 20
-            }
-        }
-    }
-});
+
 
 export default mongoose.model<IActivity>('Activity', activitySchema);
