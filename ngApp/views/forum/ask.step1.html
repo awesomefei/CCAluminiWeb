@@ -1,0 +1,47 @@
+
+<div class="col-sm-9">
+    <form ng-submit='vm.saveQuestion()'>
+        <!-- <form class="form-horizontal"> -->
+            <div class="form-group">
+                <label class="control-label col-sm-1">Title:</label>
+                <div class="col-sm-11">
+                    <input type="text" class="form-control" ng-model='vm.question.title' placeholder="What is your programming question? Be specific.">
+                </div>
+<br><br>
+            </div>
+
+        <!-- </form> -->
+        <!-- <form > -->
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label class="control-label col-sm-1">Question:</label>
+                    <br>
+                </div>
+
+
+              <div class="col-sm-10">
+                  <textarea placeholder="Leave your specific programming question here..."
+                  rows="8" cols="97" ng-model='vm.question.text'></textarea>
+              </div>
+          </div>
+
+        <!-- </form> -->
+        <div class="row">
+             <div class="col-sm-offset-11 col-sm-1" style="margin-top:20px">
+                    <button type="submit" class="btn btn-primary" ng-click=''>Next</button>
+             </div>
+        </div>
+    </form>
+
+</div>
+<!-- <script type="text/javascript">
+    //document.getElementsByClassName('step1').class = 'progress-bar progress-bar-striped active';
+
+    document.getElementById('step2').style.color = 'black';
+    document.getElementById('step22').style.backgroundColor = '#e1e7f2';
+    document.getElementById('step3').style.color = 'black';
+    document.getElementById('step33').style.backgroundColor = '#e1e7f2';
+    //document.getElementsByClassName('step2').style.backgroundColor = 'white';
+
+
+</script> -->

@@ -5,9 +5,15 @@ export interface IAnswer extends mongoose.Document{
     user:User.IUser,
     text:String,
     timeCreate:Date,
+    usefulCount:number,
 }
 
 let answerSchema=new mongoose.Schema({
+    usefulCount:{
+        type:Number,
+        required:false,
+        default:0,
+    },
     user:{
         type:mongoose.Schema.Types.ObjectId,
         red:'User'

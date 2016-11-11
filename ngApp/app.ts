@@ -34,12 +34,6 @@ namespace ccalummiwebsite {
                 controller: ccalummiwebsite.Controllers.AnswerController,
                 controllerAs: 'vm'
             })
-            .state('ask', {
-                url: '/ask',
-                templateUrl: '/ngApp/views/forum/ask.html',
-                controller: ccalummiwebsite.Controllers.AskController,
-                controllerAs: 'vm'
-            })
             .state('taggedQuestion',{
                 url: '/taggedQuestion/:id',
                 templateUrl: '/ngApp/views/forum/taggedQuestion.html',
@@ -57,7 +51,33 @@ namespace ccalummiwebsite {
                     templateUrl: '/ngApp/views/doubleChat.html',
                     controller: ccalummiwebsite.Controllers.AccountCheckinController,
                     controllerAs: 'vm'
+<<<<<<< HEAD
                 })
+=======
+                    })
+            .state('ask', {
+                url: '/ask',
+                templateUrl: '/ngApp/views/forum/ask.html',
+                controller: ccalummiwebsite.Controllers.AskController,
+                controllerAs: 'vm'
+            })
+            .state('ask.step1',{
+                templateUrl: '/ngApp/views/forum/ask.step1.html',
+                controller: ccalummiwebsite.Controllers.AskController,
+                controllerAs: 'vm',
+            })
+            .state('ask.step2',{
+                url: '/ask.step2/:id',
+                templateUrl: '/ngApp/views/forum/ask.step2.html',
+                controller: ccalummiwebsite.Controllers.Step2Controller,
+                controllerAs: 'vm',
+            })
+            .state('ask.step3',{
+                templateUrl: '/ngApp/views/forum/ask.step3.html',
+                controller: ccalummiwebsite.Controllers.AskController,
+                controllerAs: 'vm',
+            })
+>>>>>>> ProfileInfo
             .state('account.timeline', {
                 // url: '/account/about',
                 templateUrl: '/ngApp/views/account/account.timeline.html',

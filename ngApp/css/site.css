@@ -1,5 +1,21 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+.progress{
+    height: 50px !important;
+    text-align: center;
+}
+
+.testTag{
+        background-color:  #b3c5e2 ;
+        width: auto;
+        margin-right: 10px;
+        text-align: center;
+        padding: 5px 5px 5px 5px;
+}
+>>>>>>> ProfileInfo
 .glyphicon-chevron-up{
     font-size: 25px;
     text-align:center;

@@ -17,12 +17,18 @@ tagRouter.get('/', (req, res) =>{
     });
 });
 tagRouter.get('/:id', (req,res) =>{
-    console.log('!!!!!!!!!!!!!!!!!'+req.params.id);
+    console.log('!!!!!!!!!');
     // var id = new ObjectId(req.params.id)
     Tag.findById(req.params['id'])
-    // Tag.findById(id)
-
-    .populate('questions')
+    //.populate('questions')
+    .populate({
+        path:'questions',
+        model:'Question',
+        populate:{
+            path:'tags',
+            model:'Tag',
+        }
+    })
     .then((tag) =>{
         console.log(tag)
         res.send(tag);
