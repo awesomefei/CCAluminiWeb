@@ -20,6 +20,10 @@ namespace ccalummiwebsite.Services {
                 }
             })
         }
+        saveTagOnService(questionId,tag){
+            console.log('!!!!!!!!!!!!!saveTagOnService');
+            return this.forumResource.saveTag({questionId:questionId},tag).$promise;
+        }
         saveAnswerOnService(questionId, answer){
             return this.forumResource.saveAnswer({questionId:questionId}, answer).$promise;
         }
@@ -46,7 +50,7 @@ namespace ccalummiwebsite.Services {
         }
 
         getTagsOnService(){
-            return this.tagResource.query();
+            return this.tagResource.query().$promise;
         }
         getTagOnService(tagId){
             return this.tagResource.get({id:tagId}).$promise;

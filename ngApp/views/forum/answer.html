@@ -22,12 +22,12 @@
              <hr>
              <h3>{{vm.question.answers.length}} Answer:</h3>
              <hr>
-             <div class="row">
+             <div class="row" ng-repeat='answer in vm.question.answers'>
                  <div class="col-sm-1">
                      <a href="#" ><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
-                     <p>&nbsp&nbsp{{vm.question.voteCount}}</p>
+                     <p>&nbsp&nbsp{{answer.usefulCount}}</p>
                  </div>
-                 <div class="col-sm-11"  ng-repeat='answer in vm.question.answers' style="font-family: 'Raleway', sans-serif; font-size:20px">
+                 <div class="col-sm-11"   style="font-family: 'Raleway', sans-serif; font-size:20px">
                      <p style="font-size:20px;">
                          {{answer.text}}
                      </p>
@@ -48,6 +48,9 @@
                  <br><br>
                  <imput type="submit" class="btn btn-primary" ng-click='vm.saveAnswer()'>Post Your Answer</button>
              </form>
+            </div>
+            <div class="col-sm-4" style="background-cold:black">
+
             </div>
     </div>
 </div>

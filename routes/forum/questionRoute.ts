@@ -20,7 +20,19 @@ questionRouter.get('/', (req, res) =>{
 questionRouter.get('/:id', (req,res)=>{
 
     Question.findById(req.params['id'])
-    .populate('answers users tags')
+    // .populate('answers users tags')
+    .populate({
+        path:'answers',
+        model:'Answer',
+    })
+    .populate({
+        path:'users',
+        model:'User',
+    })
+    .populate({
+        path:'tags',
+        model:'Tag',
+    })
 
     .then((question)=>{
         res.send(question);

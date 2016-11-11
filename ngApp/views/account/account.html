@@ -5,11 +5,8 @@
         <div class="overlay">
             <a href="#" style="text-decoration:none;" ng-click='vm.pickFile()'><h2>Change Profile Picture</h2></a>
         </div>
-
     </div>
 
-
-    </div>
 </div>
 <br>
 <div class="container">
@@ -17,7 +14,7 @@
         <div class="col-md-12">
             <ul class="nav nav-tabs" style="font-size:20px;">
                 <li class="active"><a ui-sref="account.timeline">Timeline</a></li>
-                <li><a ui-sref="account.about">About</a></li>
+                <li ><a ui-sref="account.about">About</a></li>
                 <li><a ui-sref="account.friends">Friends({{vm.userAccount.friendsList.length}})</a></li>
                 <li><a ui-sref="account.photo">Photos</a></li>
                 <li><a ui-sref="account.checkin">Checkin</a></li>
@@ -27,4 +24,4 @@
     <div class="container-fluid">
         <ui-view>
         </div>
-    </div>
+</div>
